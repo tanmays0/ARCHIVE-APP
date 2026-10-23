@@ -52,7 +52,6 @@ With the emulator already running and the app installed:
 cd ARCHIVE-APP
 adb reverse tcp:8081 tcp:8081
 npx expo start
-# press `a` to open on Android, or:
 npx expo run:android
 ```
 
