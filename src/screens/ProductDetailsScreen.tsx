@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — Product details with gallery, add-to-cart, wishlist.
- * [Assignment 3 / 6 / 10]
- */
 import React, { useMemo, useState } from 'react';
 import {
   Alert,
@@ -23,12 +19,7 @@ import { useProducts } from '../hooks/useProducts';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import type { RootStackParamList } from '../navigation/types';
-
 type Props = NativeStackScreenProps<RootStackParamList, 'ProductDetails'>;
-
-/**
- * Full product page — gallery, size, condition, authenticity, cart + wishlist.
- */
 export function ProductDetailsScreen({ route, navigation }: Props) {
   const { productId } = route.params;
   const { getById } = useProducts();
@@ -36,15 +27,11 @@ export function ProductDetailsScreen({ route, navigation }: Props) {
   const { addItem } = useCart();
   const { isWishlisted, toggle } = useWishlist();
   const { width } = useWindowDimensions();
-
   const [size, setSize] = useState(product?.sizes[0] ?? '');
   const [qty, setQty] = useState(1);
   const [imageIndex, setImageIndex] = useState(0);
-
   const wished = product ? isWishlisted(product.id) : false;
-
   const images = useMemo(() => product?.images ?? [], [product]);
-
   if (!product) {
     return (
       <View style={styles.missing}>
@@ -53,20 +40,17 @@ export function ProductDetailsScreen({ route, navigation }: Props) {
       </View>
     );
   }
-
   const onAdd = () => {
     if (!size) {
       Alert.alert('Select a size', 'Please choose a size before adding to cart.');
       return;
     }
     addItem(product.id, size, qty);
-    // [Assignment 6] Alert on added to cart
     Alert.alert('Added to cart', `${product.name} (${size}) × ${qty}`, [
       { text: 'Keep browsing', style: 'cancel' },
       { text: 'View cart', onPress: () => navigation.navigate('MainTabs') },
     ]);
   };
-
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <ScrollView
@@ -128,7 +112,6 @@ export function ProductDetailsScreen({ route, navigation }: Props) {
     </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bone },
   content: { paddingBottom: spacing.huge },

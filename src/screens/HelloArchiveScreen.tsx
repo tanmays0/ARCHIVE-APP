@@ -1,8 +1,4 @@
-/**
- * ARCHIVE Mobile — Assignment 1 Hello World / boot screen.
- * Demonstrates Expo project setup on Android emulator.
- */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
@@ -12,19 +8,7 @@ import type { RootStackParamList } from '../navigation/types';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'HelloArchive'>;
 
-/**
- * Cream boot screen: "Hello ARCHIVE" → Enter the Archive.
- * [Assignment 1] Basic Hello World on Android emulator.
- */
 export function HelloArchiveScreen({ navigation }: Props) {
-  useEffect(() => {
-    // Auto-advance after a short pause so demos feel polished
-    const timer = setTimeout(() => {
-      // stay until user taps — better for viva demo control
-    }, 0);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />

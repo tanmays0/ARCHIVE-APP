@@ -1,28 +1,13 @@
-/**
- * ARCHIVE Mobile — Quantity stepper (+ / −).
- * [Assignment 3] useState / controlled quantity via props + callbacks.
- */
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors, radii, spacing, typography } from '../../theme';
-
 export interface QuantityStepperProps {
-  /** Current quantity (controlled) */
   value: number;
   onChange: (next: number) => void;
   min?: number;
   max?: number;
 }
-
-/**
- * Increment / decrement quantity control.
- */
-export function QuantityStepper({
-  value,
-  onChange,
-  min = 1,
-  max = 99,
-}: QuantityStepperProps) {
+export function QuantityStepper({ value, onChange, min = 1, max = 99 }: QuantityStepperProps) {
   return (
     <View style={styles.row}>
       <Pressable
@@ -43,7 +28,6 @@ export function QuantityStepper({
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',

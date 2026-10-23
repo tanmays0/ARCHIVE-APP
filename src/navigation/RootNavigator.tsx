@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — Root Native Stack Navigator.
- * [Assignment 7 / 9 / 10] Stack Navigation between all screens.
- */
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { colors, typography } from '../theme';
@@ -17,12 +13,7 @@ import { ContactScreen } from '../screens/ContactScreen';
 import { TechInsightsScreen } from '../screens/TechInsightsScreen';
 import { AssignmentsScreen } from '../screens/AssignmentsScreen';
 import { ApiDemoScreen } from '../screens/ApiDemoScreen';
-
 const Stack = createNativeStackNavigator<RootStackParamList>();
-
-/**
- * Root stack wrapping tabs and modal-style flows.
- */
 export function RootNavigator() {
   return (
     <Stack.Navigator
@@ -37,17 +28,12 @@ export function RootNavigator() {
         contentStyle: { backgroundColor: colors.bone },
       }}
     >
-      {/* [Assignment 1] Boot / Hello World screen */}
       <Stack.Screen
         name="HelloArchive"
         component={HelloArchiveScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="MainTabs"
-        component={MainTabs}
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
       <Stack.Screen
         name="ProductDetails"
         component={ProductDetailsScreen}
@@ -76,11 +62,7 @@ export function RootNavigator() {
         component={AssignmentsScreen}
         options={{ title: 'Assignments Demo' }}
       />
-      <Stack.Screen
-        name="ApiDemo"
-        component={ApiDemoScreen}
-        options={{ title: 'API Demo (A8)' }}
-      />
+      <Stack.Screen name="ApiDemo" component={ApiDemoScreen} options={{ title: 'API Demo (A8)' }} />
     </Stack.Navigator>
   );
 }

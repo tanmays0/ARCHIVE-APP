@@ -1,27 +1,24 @@
-/**
- * ARCHIVE Mobile — Assignments demo helper for viva.
- * Lists each assignment with a one-line description and navigation button.
- */
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { colors, radii, spacing, typography } from '../theme';
 import { Button } from '../components/ui/Button';
 import type { RootStackParamList } from '../navigation/types';
-
 type Props = NativeStackScreenProps<RootStackParamList, 'Assignments'>;
-
 type DemoTarget =
-  | { kind: 'stack'; screen: keyof RootStackParamList }
-  | { kind: 'tabs' };
-
+  | {
+      kind: 'stack';
+      screen: keyof RootStackParamList;
+    }
+  | {
+      kind: 'tabs';
+    };
 interface AssignmentRow {
   id: string;
   title: string;
   blurb: string;
   target: DemoTarget;
 }
-
 const ASSIGNMENTS: AssignmentRow[] = [
   {
     id: '1',
@@ -84,10 +81,6 @@ const ASSIGNMENTS: AssignmentRow[] = [
     target: { kind: 'tabs' },
   },
 ];
-
-/**
- * Viva helper — jump to the screen that demonstrates each assignment.
- */
 export function AssignmentsScreen({ navigation }: Props) {
   const go = (target: DemoTarget) => {
     if (target.kind === 'tabs') {
@@ -132,7 +125,6 @@ export function AssignmentsScreen({ navigation }: Props) {
       }
     }
   };
-
   return (
     <FlatList
       style={styles.screen}
@@ -154,7 +146,6 @@ export function AssignmentsScreen({ navigation }: Props) {
     />
   );
 }
-
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bone },
   content: { padding: spacing.xl, paddingBottom: spacing.huge },

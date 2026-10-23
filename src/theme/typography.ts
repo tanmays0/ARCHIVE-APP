@@ -1,9 +1,5 @@
-/**
- * ARCHIVE Mobile — Typography tokens (Fraunces display + DM Sans body).
- */
 import { TextStyle } from 'react-native';
 import { colors } from './colors';
-
 export const fontFamilies = {
   display: 'Fraunces_600SemiBold',
   displayRegular: 'Fraunces_400Regular',
@@ -12,9 +8,7 @@ export const fontFamilies = {
   bodyMedium: 'DMSans_500Medium',
   bodyBold: 'DMSans_700Bold',
 } as const;
-
 type TypeStyle = TextStyle;
-
 export const typography: Record<string, TypeStyle> = {
   hero: {
     fontFamily: fontFamilies.display,

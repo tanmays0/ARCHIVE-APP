@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — Bottom tab navigator.
- * [Assignment 7] Tabs sit on top of the root Stack.
- */
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -12,21 +8,12 @@ import { CatalogueScreen } from '../screens/CatalogueScreen';
 import { CartScreen } from '../screens/CartScreen';
 import { CustomerProfileScreen } from '../screens/CustomerProfileScreen';
 import { useCart } from '../context/CartContext';
-
 const Tab = createBottomTabNavigator<MainTabParamList>();
-
 function TabIcon({ label, focused }: { label: string; focused: boolean }) {
-  return (
-    <Text style={[styles.icon, focused && styles.iconFocused]}>{label}</Text>
-  );
+  return <Text style={[styles.icon, focused && styles.iconFocused]}>{label}</Text>;
 }
-
-/**
- * Main storefront tabs: Home | Catalogue | Cart | Profile.
- */
 export function MainTabs() {
   const { itemCount } = useCart();
-
   return (
     <Tab.Navigator
       screenOptions={{
@@ -82,7 +69,6 @@ export function MainTabs() {
     </Tab.Navigator>
   );
 }
-
 const styles = StyleSheet.create({
   icon: {
     fontSize: 18,

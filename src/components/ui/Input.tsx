@@ -1,19 +1,10 @@
-/**
- * ARCHIVE Mobile — Styled TextInput wrapper.
- * [Assignment 5 / 6] TextInput with StyleSheet branding.
- */
 import React from 'react';
 import { StyleSheet, Text, TextInput, TextInputProps, View } from 'react-native';
 import { colors, radii, spacing, typography } from '../../theme';
-
 export interface InputProps extends TextInputProps {
   label: string;
   error?: string;
 }
-
-/**
- * Labelled text field with optional error message.
- */
 export function Input({ label, error, style, ...rest }: InputProps) {
   return (
     <View style={styles.wrap}>
@@ -27,7 +18,6 @@ export function Input({ label, error, style, ...rest }: InputProps) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   wrap: {
     marginBottom: spacing.lg,

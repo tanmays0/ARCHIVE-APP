@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — Customer Profile (Assignment 5).
- * View, Text, Image, TextInput, Button, Switch, ScrollView, StyleSheet.
- */
 import React, { useState } from 'react';
 import {
   Alert,
@@ -21,16 +17,10 @@ import { useProfile } from '../context/ProfileContext';
 import { formatMemberSince } from '../utils/format';
 import { isValidEmail } from '../utils/validation';
 import type { RootStackParamList } from '../navigation/types';
-
-/**
- * Editable customer profile demonstrating core RN components.
- * [Assignment 5] Explicit use of View, Text, Image, TextInput, Button, Switch, ScrollView, StyleSheet.
- */
 export function CustomerProfileScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { profile, updateProfile, save } = useProfile();
   const [editing, setEditing] = useState(false);
-
   const onSave = async () => {
     if (!isValidEmail(profile.email)) {
       Alert.alert('Invalid email', 'Please enter a valid email address.');
@@ -40,11 +30,8 @@ export function CustomerProfileScreen() {
     setEditing(false);
     Alert.alert('Saved', 'Your profile details were updated.');
   };
-
   return (
-    // [Assignment 5] ScrollView
     <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
-      {/* [Assignment 5] View + Image + Text */}
       <View style={styles.header}>
         <Image source={{ uri: profile.avatarUri }} style={styles.avatar} />
         <Text style={styles.name}>{profile.name}</Text>
@@ -52,7 +39,7 @@ export function CustomerProfileScreen() {
       </View>
 
       <Text style={styles.section}>Details</Text>
-      {/* [Assignment 5] TextInput fields */}
+
       <Text style={styles.label}>Name</Text>
       <TextInput
         style={styles.input}
@@ -95,7 +82,7 @@ export function CustomerProfileScreen() {
       <Text style={styles.section}>Preferences</Text>
       <View style={styles.switchRow}>
         <Text style={styles.switchLabel}>Order notifications</Text>
-        {/* [Assignment 5] Switch */}
+
         <Switch
           value={profile.orderNotifications}
           onValueChange={(orderNotifications) => updateProfile({ orderNotifications })}
@@ -111,7 +98,6 @@ export function CustomerProfileScreen() {
         />
       </View>
 
-      {/* [Assignment 5] Button (React Native core Button) */}
       <View style={styles.btnWrap}>
         {editing ? (
           <RNButton title="Save profile" color={colors.clay} onPress={onSave} />
@@ -143,8 +129,6 @@ export function CustomerProfileScreen() {
     </ScrollView>
   );
 }
-
-/* [Assignment 5] StyleSheet */
 const styles = StyleSheet.create({
   scroll: { flex: 1, backgroundColor: colors.bone },
   content: { padding: spacing.xl, paddingBottom: spacing.huge },

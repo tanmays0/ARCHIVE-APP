@@ -1,14 +1,9 @@
-/**
- * ARCHIVE Mobile — Subtle elevation shadows (Android + iOS-compatible).
- */
 import { Platform, ViewStyle } from 'react-native';
 import { colors } from './colors';
-
 type ShadowStyle = Pick<
   ViewStyle,
   'shadowColor' | 'shadowOffset' | 'shadowOpacity' | 'shadowRadius' | 'elevation'
 >;
-
 export const shadows: Record<'sm' | 'md' | 'lg', ShadowStyle> = {
   sm: Platform.select({
     ios: {

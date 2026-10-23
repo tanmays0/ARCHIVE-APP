@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — Spacing scale (4pt grid).
- */
-
 export const spacing = {
   xxs: 2,
   xs: 4,
@@ -13,5 +9,4 @@ export const spacing = {
   xxxl: 48,
   huge: 64,
 } as const;
-
 export type SpacingToken = keyof typeof spacing;

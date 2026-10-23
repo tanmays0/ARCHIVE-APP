@@ -1,12 +1,7 @@
-/**
- * ARCHIVE Mobile — Authenticity & Services.
- * [Assignment 9 / 10] Craft + Customer promise groups.
- */
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { colors, radii, spacing, typography } from '../theme';
 import { SectionHeader } from '../components/ui/SectionHeader';
-
 const CRAFT = [
   {
     title: 'Authentication',
@@ -29,7 +24,6 @@ const CRAFT = [
     body: 'Real, unretouched photography of the actual item you will receive.',
   },
 ];
-
 const PROMISE = [
   {
     title: 'Sustainability',
@@ -52,10 +46,6 @@ const PROMISE = [
     body: 'Every listing carries era, condition notes, and the piece’s next-chapter narrative.',
   },
 ];
-
-/**
- * Two service groups: Craft and Customer promise.
- */
 export function AuthenticityServicesScreen() {
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
@@ -83,7 +73,6 @@ export function AuthenticityServicesScreen() {
     </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bone },
   content: { padding: spacing.xl, paddingBottom: spacing.huge },

@@ -1,32 +1,14 @@
-/**
- * ARCHIVE Mobile — Primary/secondary Button.
- * [Assignment 3] Reusable functional component with props.
- */
 import React from 'react';
-import {
-  ActivityIndicator,
-  Pressable,
-  StyleSheet,
-  Text,
-  ViewStyle,
-  TextStyle,
-} from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet, Text, ViewStyle, TextStyle } from 'react-native';
 import { colors, radii, spacing, typography } from '../../theme';
-
 export interface ButtonProps {
-  /** Button label */
   title: string;
-  /** Press handler */
   onPress: () => void;
   variant?: 'primary' | 'secondary' | 'ghost';
   disabled?: boolean;
   loading?: boolean;
   style?: ViewStyle;
 }
-
-/**
- * ARCHIVE branded pressable button.
- */
 export function Button({
   title,
   onPress,
@@ -37,7 +19,6 @@ export function Button({
 }: ButtonProps) {
   const isPrimary = variant === 'primary';
   const isGhost = variant === 'ghost';
-
   return (
     <Pressable
       accessibilityRole="button"
@@ -70,7 +51,6 @@ export function Button({
     </Pressable>
   );
 }
-
 const styles = StyleSheet.create({
   base: {
     minHeight: 48,

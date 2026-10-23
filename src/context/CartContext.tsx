@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — Cart state via Context + useReducer.
- * [Assignment 4 / 10] State-based cart updates with AsyncStorage persistence.
- */
 import React, {
   createContext,
   useCallback,
@@ -13,19 +9,35 @@ import React, {
 import { loadCart, saveCart } from '../services/storage';
 import type { CartItem, Product } from '../types';
 import { useProducts } from '../hooks/useProducts';
-
 type CartAction =
-  | { type: 'HYDRATE'; items: CartItem[] }
-  | { type: 'ADD'; productId: string; size: string; quantity?: number }
-  | { type: 'REMOVE'; productId: string; size: string }
-  | { type: 'SET_QTY'; productId: string; size: string; quantity: number }
-  | { type: 'CLEAR' };
-
+  | {
+      type: 'HYDRATE';
+      items: CartItem[];
+    }
+  | {
+      type: 'ADD';
+      productId: string;
+      size: string;
+      quantity?: number;
+    }
+  | {
+      type: 'REMOVE';
+      productId: string;
+      size: string;
+    }
+  | {
+      type: 'SET_QTY';
+      productId: string;
+      size: string;
+      quantity: number;
+    }
+  | {
+      type: 'CLEAR';
+    };
 interface CartState {
   items: CartItem[];
   hydrated: boolean;
 }
-
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case 'HYDRATE':
@@ -82,7 +94,6 @@ function cartReducer(state: CartState, action: CartAction): CartState {
     }
   }
 }
-
 interface CartContextValue {
   items: CartItem[];
   hydrated: boolean;
@@ -92,42 +103,32 @@ interface CartContextValue {
   removeItem: (productId: string, size: string) => void;
   setQuantity: (productId: string, size: string, quantity: number) => void;
   clearCart: () => void;
-  getLineProducts: () => (CartItem & { product: Product })[];
+  getLineProducts: () => (CartItem & {
+    product: Product;
+  })[];
 }
-
 const CartContext = createContext<CartContextValue | null>(null);
-
-/**
- * Provides cart state to the app tree.
- */
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [], hydrated: false });
   const { getById, allProducts } = useProducts();
-
   useEffect(() => {
     loadCart().then((items) => dispatch({ type: 'HYDRATE', items }));
   }, []);
-
   useEffect(() => {
     if (state.hydrated) {
       void saveCart(state.items);
     }
   }, [state.items, state.hydrated]);
-
   const addItem = useCallback((productId: string, size: string, quantity?: number) => {
     dispatch({ type: 'ADD', productId, size, quantity });
   }, []);
-
   const removeItem = useCallback((productId: string, size: string) => {
     dispatch({ type: 'REMOVE', productId, size });
   }, []);
-
   const setQuantity = useCallback((productId: string, size: string, quantity: number) => {
     dispatch({ type: 'SET_QTY', productId, size, quantity });
   }, []);
-
   const clearCart = useCallback(() => dispatch({ type: 'CLEAR' }), []);
-
   const getLineProducts = useCallback(() => {
     return state.items
       .map((item) => {
@@ -135,21 +136,20 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         if (!product) return null;
         return { ...item, product };
       })
-      .filter(Boolean) as (CartItem & { product: Product })[];
+      .filter(Boolean) as (CartItem & {
+      product: Product;
+    })[];
   }, [state.items, getById]);
-
   const itemCount = useMemo(
     () => state.items.reduce((sum, i) => sum + i.quantity, 0),
     [state.items],
   );
-
   const subtotal = useMemo(() => {
     return state.items.reduce((sum, i) => {
       const product = allProducts.find((p) => p.id === i.productId);
       return sum + (product ? product.price * i.quantity : 0);
     }, 0);
   }, [state.items, allProducts]);
-
   const value = useMemo(
     () => ({
       items: state.items,
@@ -174,11 +174,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       getLineProducts,
     ],
   );
-
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
-
-/** Consumes cart context; throws if used outside provider. */
 export function useCart(): CartContextValue {
   const ctx = useContext(CartContext);
   if (!ctx) throw new Error('useCart must be used within CartProvider');

@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — Border radius tokens.
- */
-
 export const radii = {
   none: 0,
   sm: 4,
@@ -11,5 +7,4 @@ export const radii = {
   xxl: 24,
   full: 9999,
 } as const;
-
 export type RadiiToken = keyof typeof radii;

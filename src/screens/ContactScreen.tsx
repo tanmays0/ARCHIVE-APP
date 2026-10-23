@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — Customer support contact form.
- * [Assignment 6 / 7] TextInput + Button + Alert validation.
- */
 import React, { useState } from 'react';
 import { Alert, ScrollView, StyleSheet } from 'react-native';
 import { colors, spacing } from '../theme';
@@ -9,24 +5,17 @@ import { Input } from '../components/ui/Input';
 import { Button } from '../components/ui/Button';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import { validateContactFields } from '../utils/validation';
-
-/**
- * Support form: name, email, order number, message.
- */
 export function ContactScreen() {
-  // [Assignment 6] Controlled TextInput state
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [orderNumber, setOrderNumber] = useState('');
   const [message, setMessage] = useState('');
   const [errors, setErrors] = useState<Record<string, string | undefined>>({});
-
   const onSubmit = () => {
     const next = validateContactFields({ name, email, message });
     setErrors(next);
     const firstError = Object.values(next).find(Boolean);
     if (firstError) {
-      // [Assignment 6] Alert on validation errors
       Alert.alert('Please check the form', firstError);
       return;
     }
@@ -47,7 +36,6 @@ export function ContactScreen() {
       ],
     );
   };
-
   return (
     <ScrollView
       style={styles.screen}
@@ -87,7 +75,6 @@ export function ContactScreen() {
     </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bone },
   content: { padding: spacing.xl, paddingBottom: spacing.huge },

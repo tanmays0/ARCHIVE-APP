@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — Product card for FlatList / carousels.
- * [Assignment 3] Props + wishlist useState via context toggle.
- */
 import React, { memo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
@@ -10,22 +6,14 @@ import type { Product } from '../../types';
 import { Badge } from '../ui/Badge';
 import { PriceTag } from '../ui/PriceTag';
 import { useWishlist } from '../../context/WishlistContext';
-
 export interface ProductCardProps {
   product: Product;
   onPress: (product: Product) => void;
   width?: number;
 }
-
-/**
- * Memoised product card — used as FlatList renderItem.
- * [Assignment 8] Memoised renderItem for efficient scrolling.
- */
 function ProductCardComponent({ product, onPress, width }: ProductCardProps) {
-  // [Assignment 3] Wishlist heart driven by shared state
   const { isWishlisted, toggle } = useWishlist();
   const wished = isWishlisted(product.id);
-
   return (
     <Pressable
       onPress={() => onPress(product)}
@@ -65,9 +53,7 @@ function ProductCardComponent({ product, onPress, width }: ProductCardProps) {
     </Pressable>
   );
 }
-
 export const ProductCard = memo(ProductCardComponent);
-
 const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.surfaceCard,

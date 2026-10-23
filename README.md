@@ -1,71 +1,107 @@
-# ARCHIVE Mobile
+# ARCHIVE
 
-Curated vintage & pre-loved fashion marketplace — **React Native (Expo SDK 58)**, TypeScript, **Android-only** demonstration for Cross Platform App Development.
+Curated vintage and pre-loved fashion marketplace for Android — authenticated pieces, editorial catalogue, cart, and checkout.
 
-Brand, copy, palette, and catalogue shape adapted from the web app: [tanmays0/ARCHIVE](https://github.com/tanmays0/ARCHIVE).
+Built with **Expo (SDK 58)**, **React Native**, and **TypeScript**. Companion to the web experience at [tanmays0/ARCHIVE](https://github.com/tanmays0/ARCHIVE).
 
-## Quick start (Pixel_9 emulator)
+## Features
+
+- Scroll-driven home landing with brand story and featured collections
+- Catalogue with search, category chips, sort, and efficient `FlatList` scrolling
+- Product details with gallery, condition grade, authenticity badge, wishlist
+- Cart with quantity controls and AsyncStorage persistence
+- Checkout with validation, gift-wrap option, and order confirmation
+- Customer profile, contact form, authenticity & services pages
+- Local catalogue (26 pieces) plus optional public API demo screen
+
+## Requirements
+
+- Node.js 22+
+- Android Studio with Android SDK and Platform Tools
+- Pixel_9 (or similar) Android Virtual Device
 
 ```bash
-# 1. Environment
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools
+```
 
-# 2. Emulator
-# Start Pixel_9 from Android Studio Device Manager, then:
-adb devices
+## Install
 
-# 3. App
-cd /Users/shind/Desktop/ARCHIVE-APP
+```bash
+git clone https://github.com/tanmays0/ARCHIVE-APP.git
+cd ARCHIVE-APP
 npm install
-npx expo start
+```
+
+## Run on Android emulator
+
+Start the Pixel_9 AVD from Android Studio **Device Manager**, then:
+
+```bash
+adb devices
 npx expo run:android
 ```
 
-Full setup & troubleshooting: [docs/ASSIGNMENT_1_Setup.md](docs/ASSIGNMENT_1_Setup.md).
+First build compiles native modules and can take several minutes. Later launches are much faster.
+
+### Day-to-day restart
+
+With the emulator already running and the app installed:
+
+```bash
+cd ARCHIVE-APP
+adb reverse tcp:8081 tcp:8081
+npx expo start
+# press `a` to open on Android, or:
+npx expo run:android
+```
 
 ## Scripts
 
-| Command | Purpose |
-|---------|---------|
-| `npm start` / `npx expo start` | Metro bundler |
-| `npm run android` / `npx expo run:android` | Native Android build + launch |
-| `npm run typecheck` | `tsc --noEmit` |
+| Command | Description |
+|---------|-------------|
+| `npm start` | Start Metro bundler |
+| `npm run android` | Build, install, and launch on Android |
+| `npm run typecheck` | TypeScript (`tsc --noEmit`) |
 | `npm run lint` | ESLint |
 | `npm run format` | Prettier |
 
-## Architecture
+## Stack
 
-- **Navigation:** Native Stack (root) + bottom tabs (Home, Shop, Cart, Profile)
-- **State:** React Context + `useReducer` (Cart, Wishlist, Profile) — no Redux
-- **Data:** Local `src/data/products.json` (26 pieces) + FakeStore API demo (Assignment 8)
-- **Persistence:** AsyncStorage for cart / wishlist / profile
-- **Theme:** `src/theme` — bone `#f2eee6`, ink `#181510`, clay `#a9522f`, Fraunces + DM Sans
+| Layer | Choice |
+|-------|--------|
+| Runtime | Expo 58 / React Native 0.88 |
+| Language | TypeScript |
+| Navigation | React Navigation (native stack + bottom tabs) |
+| State | React Context + `useReducer` |
+| Persistence | AsyncStorage |
+| Images | `expo-image` |
+| Motion | `react-native-reanimated` |
+| Fonts | Fraunces (display), DM Sans (body) |
 
-## Screens
+## Project layout
 
-Hello ARCHIVE · Home · About · Authenticity & Services · Catalogue · Product Details · Cart · Checkout · Order Confirmation · Customer Profile · Contact · Tech Insights · Assignments · API Demo
+```
+App.tsx                 # Entry: fonts, providers, navigation
+src/
+  navigation/           # Root stack + main tabs
+  screens/              # Route screens
+  components/ui/        # Shared UI primitives
+  components/product/   # Product card / grid
+  context/              # Cart, wishlist, profile
+  hooks/                # Products, debounce, responsive
+  services/             # API + storage
+  data/                 # products.json, collections.json
+  theme/                # Colors, typography, spacing
+  utils/                # Format + validation
+  types/                # Shared types
+docs/                   # Course assignment notes (optional reading)
+```
 
-## Assignments map
+## Brand
 
-| # | Topic | Entry point |
-|---|-------|-------------|
-| 1 | Expo setup / Hello World | `HelloArchiveScreen` + Assignment 1 doc |
-| 2 | Native vs Hybrid vs RN | `TechInsightsScreen` + Assignment 2 doc |
-| 3 | Props & state | UI kit + ProductCard wishlist / steppers |
-| 4 | Structure & reuse | `docs/ASSIGNMENT_4_Project_Structure.md` |
-| 5 | Customer profile | `CustomerProfileScreen` |
-| 6 | Responsive + Alerts | Checkout / Contact / Cart |
-| 7 | Stack navigation | Home / About / Contact |
-| 8 | FlatList + API | Catalogue + `ApiDemoScreen` |
-| 9–10 | Storefront + shopping | See `docs/ASSIGNMENT_9_10_Mapping.md` |
+Warm-neutral editorial palette from the ARCHIVE web design system: bone `#f2eee6`, ink `#181510`, clay `#a9522f`, olive `#6b6a54`.
 
-## Rubric & viva
+## License
 
-- [docs/RUBRIC_TRACEABILITY.md](docs/RUBRIC_TRACEABILITY.md)
-- [docs/VIVA_NOTES.md](docs/VIVA_NOTES.md)
-- [docs/SCREENSHOTS_CHECKLIST.md](docs/SCREENSHOTS_CHECKLIST.md)
-
-## Dependencies (justified)
-
-Expo, React Navigation (stack + tabs), expo-image, expo-font + Fraunces/DM Sans, safe-area-context, AsyncStorage, Reanimated, gesture-handler, screens — see plan dependency list. No Redux, no axios.
+See [LICENSE](LICENSE).

@@ -1,21 +1,13 @@
-/**
- * ARCHIVE Mobile — Empty list / cart placeholder.
- */
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, spacing, typography } from '../../theme';
 import { Button } from './Button';
-
 export interface EmptyStateProps {
   title: string;
   message?: string;
   actionLabel?: string;
   onAction?: () => void;
 }
-
-/**
- * Shown when FlatList / cart has no items.
- */
 export function EmptyState({ title, message, actionLabel, onAction }: EmptyStateProps) {
   return (
     <View style={styles.wrap}>
@@ -27,7 +19,6 @@ export function EmptyState({ title, message, actionLabel, onAction }: EmptyState
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   wrap: {
     padding: spacing.xxl,

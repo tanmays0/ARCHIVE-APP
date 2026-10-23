@@ -1,31 +1,16 @@
-/**
- * ARCHIVE Mobile — Form validation helpers.
- * [Assignment 6] Used by Checkout and Contact for Alert-driven validation.
- */
-
-/** Basic email shape check. */
 export function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
-
-/** Returns true when a string has non-whitespace content. */
 export function isNonEmpty(value: string): boolean {
   return value.trim().length > 0;
 }
-
-/** Validates a checkout-style phone (7+ digits after stripping non-digits). */
 export function isValidPhone(phone: string): boolean {
   const digits = phone.replace(/\D/g, '');
   return digits.length >= 7;
 }
-
 export interface FieldErrors {
   [key: string]: string | undefined;
 }
-
-/**
- * Validates required shipping fields for checkout.
- */
 export function validateCheckoutFields(fields: {
   fullName: string;
   email: string;
@@ -45,10 +30,6 @@ export function validateCheckoutFields(fields: {
   if (!isNonEmpty(fields.postalCode)) errors.postalCode = 'Postal code is required.';
   return errors;
 }
-
-/**
- * Validates the contact support form.
- */
 export function validateContactFields(fields: {
   name: string;
   email: string;

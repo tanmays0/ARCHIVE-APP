@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — About / brand story.
- * [Assignment 7 / 9] About with mission, sourcing, Our Journey timeline.
- */
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -10,21 +6,35 @@ import { colors, radii, spacing, typography } from '../theme';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import { Button } from '../components/ui/Button';
 import type { RootStackParamList } from '../navigation/types';
-
 const JOURNEY = [
-  { year: '2019', title: 'Founded', body: 'ARCHIVE begins as a small curated rack of authenticated sportswear.' },
-  { year: '2021', title: 'First rack expands', body: 'Workwear and outerwear join the edit — still one of one.' },
-  { year: '2023', title: 'Auth lab', body: 'Multi-point inspection process formalised; Authenticated badge launches.' },
-  { year: '2025', title: 'Showroom', body: 'Editorial catalogue and showroom collection appointments open.' },
-  { year: '2026', title: 'Today', body: 'Cross-platform ARCHIVE — fewer, better things, kept in circulation.' },
+  {
+    year: '2019',
+    title: 'Founded',
+    body: 'ARCHIVE begins as a small curated rack of authenticated sportswear.',
+  },
+  {
+    year: '2021',
+    title: 'First rack expands',
+    body: 'Workwear and outerwear join the edit — still one of one.',
+  },
+  {
+    year: '2023',
+    title: 'Auth lab',
+    body: 'Multi-point inspection process formalised; Authenticated badge launches.',
+  },
+  {
+    year: '2025',
+    title: 'Showroom',
+    body: 'Editorial catalogue and showroom collection appointments open.',
+  },
+  {
+    year: '2026',
+    title: 'Today',
+    body: 'Cross-platform ARCHIVE — fewer, better things, kept in circulation.',
+  },
 ];
-
-/**
- * Brand story, mission, vision, sourcing, journey timeline.
- */
 export function AboutScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <SectionHeader
@@ -87,7 +97,6 @@ export function AboutScreen() {
     </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bone },
   content: { padding: spacing.xl, paddingBottom: spacing.huge },

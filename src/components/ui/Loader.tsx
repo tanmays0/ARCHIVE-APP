@@ -1,17 +1,9 @@
-/**
- * ARCHIVE Mobile — Loading indicator.
- */
 import React from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { colors, spacing, typography } from '../../theme';
-
 export interface LoaderProps {
   message?: string;
 }
-
-/**
- * Centred loader used for API and boot states.
- */
 export function Loader({ message = 'Loading…' }: LoaderProps) {
   return (
     <View style={styles.wrap}>
@@ -20,7 +12,6 @@ export function Loader({ message = 'Loading…' }: LoaderProps) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   wrap: {
     flex: 1,

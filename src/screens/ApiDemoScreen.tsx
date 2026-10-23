@@ -1,16 +1,5 @@
-/**
- * ARCHIVE Mobile — Public API FlatList demo (Assignment 8).
- * FakeStore API with loading, error, and retry states.
- */
 import React, { useCallback, useEffect, useState } from 'react';
-import {
-  FlatList,
-  ListRenderItem,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { FlatList, ListRenderItem, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import { colors, radii, spacing, typography } from '../theme';
 import { Loader } from '../components/ui/Loader';
@@ -19,21 +8,22 @@ import { Button } from '../components/ui/Button';
 import { fetchFakeStoreProducts } from '../services/api';
 import { formatPrice } from '../utils/format';
 import type { FakeStoreProduct } from '../types';
-
 type LoadState =
-  | { status: 'loading' }
-  | { status: 'error'; message: string }
-  | { status: 'success'; items: FakeStoreProduct[] };
-
-/**
- * Labelled Assignment 8 demonstration — not the primary ARCHIVE catalogue.
- */
+  | {
+      status: 'loading';
+    }
+  | {
+      status: 'error';
+      message: string;
+    }
+  | {
+      status: 'success';
+      items: FakeStoreProduct[];
+    };
 export function ApiDemoScreen() {
   const [loadState, setLoadState] = useState<LoadState>({ status: 'loading' });
   const [refreshing, setRefreshing] = useState(false);
-
   const fetchProducts = useCallback(async (): Promise<LoadState> => {
-    // [Assignment 8] fetch from public API
     try {
       const data = await fetchFakeStoreProducts();
       return { status: 'success', items: data };
@@ -44,7 +34,6 @@ export function ApiDemoScreen() {
       };
     }
   }, []);
-
   useEffect(() => {
     let active = true;
     fetchProducts().then((next) => {
@@ -54,19 +43,16 @@ export function ApiDemoScreen() {
       active = false;
     };
   }, [fetchProducts]);
-
   const onRetry = useCallback(() => {
     setLoadState({ status: 'loading' });
     void fetchProducts().then(setLoadState);
   }, [fetchProducts]);
-
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     void fetchProducts()
       .then(setLoadState)
       .finally(() => setRefreshing(false));
   }, [fetchProducts]);
-
   const renderItem: ListRenderItem<FakeStoreProduct> = useCallback(
     ({ item }) => (
       <View style={styles.row}>
@@ -82,11 +68,9 @@ export function ApiDemoScreen() {
     ),
     [],
   );
-
   if (loadState.status === 'loading') {
     return <Loader message="Fetching FakeStore API…" />;
   }
-
   if (loadState.status === 'error') {
     return (
       <View style={styles.center}>
@@ -98,7 +82,6 @@ export function ApiDemoScreen() {
       </View>
     );
   }
-
   return (
     <FlatList
       style={styles.screen}
@@ -115,11 +98,12 @@ export function ApiDemoScreen() {
           Assignment 8 demo — FakeStore public API (not ARCHIVE inventory). Pull to refresh.
         </Text>
       }
-      ListEmptyComponent={<EmptyState title="No API products" message="Try retrying the request." />}
+      ListEmptyComponent={
+        <EmptyState title="No API products" message="Try retrying the request." />
+      }
     />
   );
 }
-
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bone },
   content: { padding: spacing.xl, paddingBottom: spacing.huge },

@@ -1,20 +1,11 @@
-/**
- * ARCHIVE Mobile — Category / sort filter chip.
- * [Assignment 3] Props + active state for catalogue filters.
- */
 import React from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { colors, radii, spacing, typography } from '../../theme';
-
 export interface FilterChipProps {
   label: string;
   active: boolean;
   onPress: () => void;
 }
-
-/**
- * Toggleable filter chip used in catalogue headers.
- */
 export function FilterChip({ label, active, onPress }: FilterChipProps) {
   return (
     <Pressable
@@ -27,7 +18,6 @@ export function FilterChip({ label, active, onPress }: FilterChipProps) {
     </Pressable>
   );
 }
-
 const styles = StyleSheet.create({
   chip: {
     paddingHorizontal: spacing.lg,

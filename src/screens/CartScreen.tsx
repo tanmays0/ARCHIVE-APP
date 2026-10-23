@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — Cart with stepper, remove, subtotal, persistence.
- * [Assignment 4 / 6 / 10]
- */
 import React from 'react';
 import { Alert, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
@@ -14,15 +10,10 @@ import { EmptyState } from '../components/ui/EmptyState';
 import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/format';
 import type { RootStackParamList } from '../navigation/types';
-
-/**
- * Cart tab — quantity stepper, remove, checkout CTA.
- */
 export function CartScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { getLineProducts, setQuantity, removeItem, subtotal, itemCount } = useCart();
   const lines = getLineProducts();
-
   if (itemCount === 0) {
     return (
       <EmptyState
@@ -33,7 +24,6 @@ export function CartScreen() {
       />
     );
   }
-
   return (
     <View style={styles.screen}>
       <FlatList
@@ -60,7 +50,6 @@ export function CartScreen() {
               <Pressable
                 onPress={() => {
                   removeItem(item.productId, item.size);
-                  // [Assignment 6] Alert on item removed
                   Alert.alert('Removed', `${item.product.name} removed from cart.`);
                 }}
               >
@@ -80,7 +69,6 @@ export function CartScreen() {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bone },
   list: { padding: spacing.xl, paddingBottom: spacing.huge },

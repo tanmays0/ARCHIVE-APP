@@ -1,21 +1,12 @@
-/**
- * ARCHIVE Mobile — Order confirmation after successful checkout.
- */
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { colors, spacing, typography } from '../theme';
 import { Button } from '../components/ui/Button';
 import type { RootStackParamList } from '../navigation/types';
-
 type Props = NativeStackScreenProps<RootStackParamList, 'OrderConfirmation'>;
-
-/**
- * Success screen with order ID and return-to-shop CTA.
- */
 export function OrderConfirmationScreen({ route, navigation }: Props) {
   const { orderId } = route.params;
-
   return (
     <View style={styles.container}>
       <Text style={styles.eyebrow}>Thank you</Text>
@@ -32,7 +23,6 @@ export function OrderConfirmationScreen({ route, navigation }: Props) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

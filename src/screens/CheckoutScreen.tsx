@@ -1,7 +1,3 @@
-/**
- * ARCHIVE Mobile — Checkout form with validation + Switches.
- * [Assignment 6 / 10] TextInput, Switch, Button, Alert.
- */
 import React, { useEffect, useState } from 'react';
 import { Alert, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -14,16 +10,10 @@ import { useProfile } from '../context/ProfileContext';
 import { formatPrice } from '../utils/format';
 import { validateCheckoutFields } from '../utils/validation';
 import type { RootStackParamList } from '../navigation/types';
-
 type Props = NativeStackScreenProps<RootStackParamList, 'Checkout'>;
-
-/**
- * Shipping form + order summary + place order.
- */
 export function CheckoutScreen({ navigation }: Props) {
   const { subtotal, itemCount, clearCart, getLineProducts } = useCart();
   const { profile, updateProfile } = useProfile();
-
   const [fullName, setFullName] = useState(profile.name);
   const [email, setEmail] = useState(profile.email);
   const [phone, setPhone] = useState(profile.phone);
@@ -33,18 +23,15 @@ export function CheckoutScreen({ navigation }: Props) {
   const [giftWrap, setGiftWrap] = useState(false);
   const [saveDetails, setSaveDetails] = useState(true);
   const [errors, setErrors] = useState<Record<string, string | undefined>>({});
-
   useEffect(() => {
     if (itemCount === 0) {
       Alert.alert('Cart empty', 'Add pieces before checking out.');
       navigation.goBack();
     }
   }, [itemCount, navigation]);
-
   const giftFee = giftWrap ? 5 : 0;
   const total = subtotal + giftFee;
   const lines = getLineProducts();
-
   const onPlaceOrder = () => {
     const next = validateCheckoutFields({
       fullName,
@@ -60,7 +47,6 @@ export function CheckoutScreen({ navigation }: Props) {
       Alert.alert('Check shipping details', firstError);
       return;
     }
-
     if (saveDetails) {
       updateProfile({
         name: fullName.trim(),
@@ -71,10 +57,8 @@ export function CheckoutScreen({ navigation }: Props) {
         postalCode: postalCode.trim(),
       });
     }
-
     const orderId = `AR-${Date.now().toString().slice(-6)}`;
     clearCart();
-    // [Assignment 6] Alert on success
     Alert.alert('Order placed', `Your order ${orderId} is confirmed.`, [
       {
         text: 'View confirmation',
@@ -82,7 +66,6 @@ export function CheckoutScreen({ navigation }: Props) {
       },
     ]);
   };
-
   return (
     <ScrollView
       style={styles.screen}
@@ -95,7 +78,12 @@ export function CheckoutScreen({ navigation }: Props) {
         subtitle={`${itemCount} item(s) · Subtotal ${formatPrice(subtotal)}`}
       />
 
-      <Input label="Full name" value={fullName} onChangeText={setFullName} error={errors.fullName} />
+      <Input
+        label="Full name"
+        value={fullName}
+        onChangeText={setFullName}
+        error={errors.fullName}
+      />
       <Input
         label="Email"
         value={email}
@@ -149,7 +137,6 @@ export function CheckoutScreen({ navigation }: Props) {
     </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bone },
   content: { padding: spacing.xl, paddingBottom: spacing.huge },

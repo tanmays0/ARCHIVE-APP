@@ -1,15 +1,6 @@
-/**
- * ARCHIVE Mobile — Shared TypeScript types.
- */
-
-/** Condition grades matching the web catalogue. */
 export type ConditionGrade = 'Like New' | 'Excellent' | 'Good' | 'Fair';
-
-/** Top-level shop categories. */
 export type ProductCategory = 'Men' | 'Women' | 'Kids' | 'Accessories';
-
 export type ProductSubcategory = 'shoes' | 'apparel' | 'gear';
-
 export interface Product {
   id: string;
   sku: string;
@@ -31,7 +22,6 @@ export interface Product {
   isNew: boolean;
   isFeatured: boolean;
 }
-
 export interface Collection {
   id: string;
   name: string;
@@ -39,13 +29,11 @@ export interface Collection {
   description: string;
   image: string;
 }
-
 export interface CartItem {
   productId: string;
   quantity: number;
   size: string;
 }
-
 export interface CustomerProfile {
   name: string;
   email: string;
@@ -58,7 +46,6 @@ export interface CustomerProfile {
   orderNotifications: boolean;
   newsletter: boolean;
 }
-
 export interface CheckoutForm {
   fullName: string;
   email: string;
@@ -69,10 +56,7 @@ export interface CheckoutForm {
   giftWrap: boolean;
   saveDetails: boolean;
 }
-
 export type SortOption = 'featured' | 'priceAsc' | 'priceDesc' | 'newest';
-
-/** FakeStore API product shape (Assignment 8 demo). */
 export interface FakeStoreProduct {
   id: number;
   title: string;

@@ -1,13 +1,13 @@
-/**
- * ARCHIVE Mobile — In-app Tech Insights (Assignment 2).
- * Native vs Hybrid vs React Native comparison for e-commerce.
- */
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { colors, radii, spacing, typography } from '../theme';
 import { SectionHeader } from '../components/ui/SectionHeader';
-
-const ROWS: { aspect: string; native: string; hybrid: string; rn: string }[] = [
+const ROWS: {
+  aspect: string;
+  native: string;
+  hybrid: string;
+  rn: string;
+}[] = [
   {
     aspect: 'Performance',
     native: 'Highest — platform SDKs',
@@ -51,10 +51,6 @@ const ROWS: { aspect: string; native: string; hybrid: string; rn: string }[] = [
     rn: 'FlatList virtualisation',
   },
 ];
-
-/**
- * Comparative study summary for viva and Assignment 2.
- */
 export function TechInsightsScreen() {
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
@@ -88,13 +84,10 @@ export function TechInsightsScreen() {
         </View>
       ))}
 
-      <Text style={styles.footer}>
-        Full write-up: docs/ASSIGNMENT_2_Comparative_Study.md
-      </Text>
+      <Text style={styles.footer}>Full write-up: docs/ASSIGNMENT_2_Comparative_Study.md</Text>
     </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bone },
   content: { padding: spacing.xl, paddingBottom: spacing.huge },

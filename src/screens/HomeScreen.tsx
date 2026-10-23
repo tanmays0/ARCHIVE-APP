@@ -1,8 +1,3 @@
-/**
- * ARCHIVE Mobile — Scroll-driven landing (Home).
- * [Assignment 9 / 10] Brand, hero, intro, collections, trust strip, CTA.
- * [Phase 6] Reanimated parallax / fade on scroll.
- */
 import React from 'react';
 import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { Image } from 'expo-image';
@@ -23,26 +18,18 @@ import { useProducts } from '../hooks/useProducts';
 import collectionsJson from '../data/collections.json';
 import type { Collection, Product } from '../types';
 import type { RootStackParamList } from '../navigation/types';
-
 const collections = collectionsJson as Collection[];
-const HERO_URI =
-  'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80';
-
-/**
- * Editorial home landing with scroll-driven hero animation.
- */
+const HERO_URI = 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80';
 export function HomeScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { width } = useWindowDimensions();
   const { featured, newArrivals } = useProducts();
   const scrollY = useSharedValue(0);
-
   const onScroll = useAnimatedScrollHandler({
     onScroll: (e) => {
       scrollY.value = e.contentOffset.y;
     },
   });
-
   const heroStyle = useAnimatedStyle(() => ({
     transform: [
       {
@@ -54,13 +41,10 @@ export function HomeScreen() {
     ],
     opacity: interpolate(scrollY.value, [0, 220], [1, 0.35], Extrapolation.CLAMP),
   }));
-
   const openProduct = (product: Product) => {
     navigation.navigate('ProductDetails', { productId: product.id });
   };
-
   const cardWidth = Math.min(160, width * 0.42);
-
   return (
     <Animated.ScrollView
       style={styles.screen}
@@ -69,13 +53,11 @@ export function HomeScreen() {
       scrollEventThrottle={16}
       showsVerticalScrollIndicator={false}
     >
-      {/* Brand mark */}
       <View style={styles.brandBlock}>
         <Text style={styles.logo}>ARCHIVE</Text>
         <Text style={styles.tagline}>Vintage, Verified · One of one. Authenticated.</Text>
       </View>
 
-      {/* Animated hero */}
       <View style={styles.heroClip}>
         <Animated.View style={[styles.heroInner, heroStyle]}>
           <Image source={{ uri: HERO_URI }} style={styles.heroImage} contentFit="cover" />
@@ -86,7 +68,6 @@ export function HomeScreen() {
         </Animated.View>
       </View>
 
-      {/* First Look intro */}
       <View style={styles.section}>
         <SectionHeader
           eyebrow="The Edit"
@@ -106,7 +87,6 @@ export function HomeScreen() {
         />
       </View>
 
-      {/* Featured collections */}
       <View style={styles.section}>
         <SectionHeader eyebrow="The Selection" title="Featured collections" />
         <Animated.ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -123,7 +103,6 @@ export function HomeScreen() {
         </Animated.ScrollView>
       </View>
 
-      {/* Authenticated trust strip */}
       <View style={styles.trustStrip}>
         <Text style={styles.trustTitle}>Authenticated pieces</Text>
         <Text style={styles.trustBody}>
@@ -131,7 +110,6 @@ export function HomeScreen() {
         </Text>
       </View>
 
-      {/* New arrivals carousel */}
       <View style={styles.section}>
         <SectionHeader eyebrow="Just In" title="New arrivals" />
         <Animated.ScrollView
@@ -159,7 +137,6 @@ export function HomeScreen() {
     </Animated.ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   screen: {
     flex: 1,

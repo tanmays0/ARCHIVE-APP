@@ -1,19 +1,11 @@
-/**
- * ARCHIVE Mobile — Section eyebrow + title.
- */
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, spacing, typography } from '../../theme';
-
 export interface SectionHeaderProps {
   eyebrow?: string;
   title: string;
   subtitle?: string;
 }
-
-/**
- * Editorial section heading used on Home and About.
- */
 export function SectionHeader({ eyebrow, title, subtitle }: SectionHeaderProps) {
   return (
     <View style={styles.wrap}>
@@ -23,7 +15,6 @@ export function SectionHeader({ eyebrow, title, subtitle }: SectionHeaderProps) 
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   wrap: {
     marginBottom: spacing.lg,
