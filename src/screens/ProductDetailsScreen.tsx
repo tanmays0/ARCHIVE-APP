@@ -18,8 +18,11 @@ import { QuantityStepper } from '../components/ui/QuantityStepper';
 import { useProducts } from '../hooks/useProducts';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
+import { goToCart } from '../navigation/nav';
 import type { RootStackParamList } from '../navigation/types';
+
 type Props = NativeStackScreenProps<RootStackParamList, 'ProductDetails'>;
+
 export function ProductDetailsScreen({ route, navigation }: Props) {
   const { productId } = route.params;
   const { getById } = useProducts();
@@ -48,7 +51,7 @@ export function ProductDetailsScreen({ route, navigation }: Props) {
     addItem(product.id, size, qty);
     Alert.alert('Added to cart', `${product.name} (${size}) × ${qty}`, [
       { text: 'Keep browsing', style: 'cancel' },
-      { text: 'View cart', onPress: () => navigation.navigate('MainTabs') },
+      { text: 'View cart', onPress: () => goToCart(navigation) },
     ]);
   };
   return (
@@ -88,8 +91,17 @@ export function ProductDetailsScreen({ route, navigation }: Props) {
           <Badge label={product.condition} tone="ink" />
           {product.era ? <Badge label={product.era} tone="clay" /> : null}
         </View>
-        <PriceTag price={product.price} compareAtPrice={product.compareAtPrice} />
+        <PriceTag
+          price={product.price}
+          compareAtPrice={product.compareAtPrice}
+          currency={product.currency}
+        />
         <Text style={styles.description}>{product.description}</Text>
+        <Button
+          title="Size guide"
+          variant="ghost"
+          onPress={() => navigation.navigate('SizeGuide')}
+        />
 
         <Text style={styles.label}>Size</Text>
         <View style={styles.sizes}>

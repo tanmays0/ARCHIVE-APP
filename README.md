@@ -12,7 +12,8 @@ Built with **Expo (SDK 58)**, **React Native**, and **TypeScript**. Companion to
 - Cart with quantity controls and AsyncStorage persistence
 - Checkout with validation, gift-wrap option, and order confirmation
 - Customer profile, contact form, authenticity & services pages
-- Local catalogue (26 pieces) plus optional public API demo screen
+- Local catalogue (26 pieces, prices in **INR**) plus optional public API demo screen
+- Wishlist, order history, new arrivals, sale, collections, FAQ, shipping/returns, legal, consign
 
 ## Requirements
 

@@ -7,13 +7,50 @@ import { Button } from '../components/ui/Button';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import { useCart } from '../context/CartContext';
 import { useProfile } from '../context/ProfileContext';
-import { formatPrice } from '../utils/format';
+import { useOrders } from '../context/OrdersContext';
+import { createOrderId, formatPrice } from '../utils/format';
 import { validateCheckoutFields } from '../utils/validation';
+import type { Order, OrderLine } from '../types';
 import type { RootStackParamList } from '../navigation/types';
+
 type Props = NativeStackScreenProps<RootStackParamList, 'Checkout'>;
+
+const GIFT_WRAP_FEE = 400;
+
+function buildOrder(input: {
+  orderId: string;
+  subtotal: number;
+  giftWrap: boolean;
+  total: number;
+  fullName: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  lines: OrderLine[];
+}): Order {
+  return {
+    id: input.orderId,
+    createdAt: new Date().toISOString(),
+    status: 'confirmed',
+    subtotal: input.subtotal,
+    giftWrap: input.giftWrap,
+    total: input.total,
+    shippingName: input.fullName,
+    shippingAddress: input.address,
+    shippingCity: input.city,
+    shippingPostal: input.postalCode,
+    email: input.email,
+    phone: input.phone,
+    lines: input.lines,
+  };
+}
+
 export function CheckoutScreen({ navigation }: Props) {
   const { subtotal, itemCount, clearCart, getLineProducts } = useCart();
   const { profile, updateProfile } = useProfile();
+  const { addOrder } = useOrders();
   const [fullName, setFullName] = useState(profile.name);
   const [email, setEmail] = useState(profile.email);
   const [phone, setPhone] = useState(profile.phone);
@@ -23,15 +60,18 @@ export function CheckoutScreen({ navigation }: Props) {
   const [giftWrap, setGiftWrap] = useState(false);
   const [saveDetails, setSaveDetails] = useState(true);
   const [errors, setErrors] = useState<Record<string, string | undefined>>({});
+
   useEffect(() => {
     if (itemCount === 0) {
       Alert.alert('Cart empty', 'Add pieces before checking out.');
       navigation.goBack();
     }
   }, [itemCount, navigation]);
-  const giftFee = giftWrap ? 5 : 0;
+
+  const giftFee = giftWrap ? GIFT_WRAP_FEE : 0;
   const total = subtotal + giftFee;
   const lines = getLineProducts();
+
   const onPlaceOrder = () => {
     const next = validateCheckoutFields({
       fullName,
@@ -57,7 +97,31 @@ export function CheckoutScreen({ navigation }: Props) {
         postalCode: postalCode.trim(),
       });
     }
-    const orderId = `AR-${Date.now().toString().slice(-6)}`;
+
+    const orderId = createOrderId();
+    const orderLines: OrderLine[] = lines.map((l) => ({
+      productId: l.productId,
+      name: l.product.name,
+      brand: l.product.brand,
+      size: l.size,
+      quantity: l.quantity,
+      unitPrice: l.product.price,
+      image: l.product.images[0],
+    }));
+    const order = buildOrder({
+      orderId,
+      subtotal,
+      giftWrap,
+      total,
+      fullName: fullName.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
+      address: address.trim(),
+      city: city.trim(),
+      postalCode: postalCode.trim(),
+      lines: orderLines,
+    });
+    addOrder(order);
     clearCart();
     Alert.alert('Order placed', `Your order ${orderId} is confirmed.`, [
       {
@@ -66,6 +130,7 @@ export function CheckoutScreen({ navigation }: Props) {
       },
     ]);
   };
+
   return (
     <ScrollView
       style={styles.screen}
@@ -78,12 +143,7 @@ export function CheckoutScreen({ navigation }: Props) {
         subtitle={`${itemCount} item(s) · Subtotal ${formatPrice(subtotal)}`}
       />
 
-      <Input
-        label="Full name"
-        value={fullName}
-        onChangeText={setFullName}
-        error={errors.fullName}
-      />
+      <Input label="Full name" value={fullName} onChangeText={setFullName} error={errors.fullName} />
       <Input
         label="Email"
         value={email}
@@ -102,14 +162,14 @@ export function CheckoutScreen({ navigation }: Props) {
       <Input label="Address" value={address} onChangeText={setAddress} error={errors.address} />
       <Input label="City" value={city} onChangeText={setCity} error={errors.city} />
       <Input
-        label="Postal code"
+        label="PIN code"
         value={postalCode}
         onChangeText={setPostalCode}
         error={errors.postalCode}
       />
 
       <View style={styles.switchRow}>
-        <Text style={styles.switchLabel}>Gift wrap (+$5)</Text>
+        <Text style={styles.switchLabel}>Gift wrap (+{formatPrice(GIFT_WRAP_FEE)})</Text>
         <Switch
           value={giftWrap}
           onValueChange={setGiftWrap}
@@ -137,6 +197,7 @@ export function CheckoutScreen({ navigation }: Props) {
     </ScrollView>
   );
 }
+
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bone },
   content: { padding: spacing.xl, paddingBottom: spacing.huge },

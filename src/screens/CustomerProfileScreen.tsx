@@ -17,10 +17,12 @@ import { useProfile } from '../context/ProfileContext';
 import { formatMemberSince } from '../utils/format';
 import { isValidEmail } from '../utils/validation';
 import type { RootStackParamList } from '../navigation/types';
+
 export function CustomerProfileScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { profile, updateProfile, save } = useProfile();
   const [editing, setEditing] = useState(false);
+
   const onSave = async () => {
     if (!isValidEmail(profile.email)) {
       Alert.alert('Invalid email', 'Please enter a valid email address.');
@@ -30,6 +32,13 @@ export function CustomerProfileScreen() {
     setEditing(false);
     Alert.alert('Saved', 'Your profile details were updated.');
   };
+
+  const link = (title: string, route: keyof RootStackParamList, color: string = colors.ink) => (
+    <View style={styles.btnWrap} key={route}>
+      <RNButton title={title} color={color} onPress={() => navigation.navigate(route as never)} />
+    </View>
+  );
+
   return (
     <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
       <View style={styles.header}>
@@ -39,7 +48,6 @@ export function CustomerProfileScreen() {
       </View>
 
       <Text style={styles.section}>Details</Text>
-
       <Text style={styles.label}>Name</Text>
       <TextInput
         style={styles.input}
@@ -78,11 +86,17 @@ export function CustomerProfileScreen() {
         editable={editing}
         onChangeText={(city) => updateProfile({ city })}
       />
+      <Text style={styles.label}>PIN code</Text>
+      <TextInput
+        style={styles.input}
+        value={profile.postalCode}
+        editable={editing}
+        onChangeText={(postalCode) => updateProfile({ postalCode })}
+      />
 
       <Text style={styles.section}>Preferences</Text>
       <View style={styles.switchRow}>
         <Text style={styles.switchLabel}>Order notifications</Text>
-
         <Switch
           value={profile.orderNotifications}
           onValueChange={(orderNotifications) => updateProfile({ orderNotifications })}
@@ -105,30 +119,36 @@ export function CustomerProfileScreen() {
           <RNButton title="Edit profile" color={colors.ink} onPress={() => setEditing(true)} />
         )}
       </View>
-      <View style={styles.btnWrap}>
-        <RNButton
-          title="Assignments demo helper"
-          color={colors.olive}
-          onPress={() => navigation.navigate('Assignments')}
-        />
-      </View>
-      <View style={styles.btnWrap}>
-        <RNButton
-          title="Tech Insights (A2)"
-          color={colors.denim}
-          onPress={() => navigation.navigate('TechInsights')}
-        />
-      </View>
-      <View style={styles.btnWrap}>
-        <RNButton
-          title="Contact support"
-          color={colors.clay}
-          onPress={() => navigation.navigate('Contact')}
-        />
-      </View>
+
+      <Text style={styles.section}>Account</Text>
+      {link('Wishlist', 'Wishlist', colors.clay)}
+      {link('Orders', 'Orders', colors.clay)}
+      {link('Notifications', 'Notifications', colors.olive)}
+
+      <Text style={styles.section}>Shop</Text>
+      {link('New arrivals', 'NewArrivals')}
+      {link('Sale', 'Sale')}
+      {link('Size guide', 'SizeGuide')}
+      {link('Consign with us', 'Consign', colors.olive)}
+
+      <Text style={styles.section}>Help & legal</Text>
+      {link('FAQ', 'FAQ')}
+      {link('Shipping policy', 'ShippingPolicy')}
+      {link('Returns policy', 'ReturnsPolicy')}
+      {link('Contact support', 'Contact', colors.clay)}
+      {link('Privacy policy', 'PrivacyPolicy')}
+      {link('Terms of service', 'TermsOfService')}
+      {link('Authenticity & services', 'AuthenticityServices')}
+      {link('About ARCHIVE', 'About')}
+
+      <Text style={styles.section}>Course demos</Text>
+      {link('Assignments helper', 'Assignments', colors.olive)}
+      {link('Tech Insights', 'TechInsights', colors.denim)}
+      {link('API demo', 'ApiDemo', colors.denim)}
     </ScrollView>
   );
 }
+
 const styles = StyleSheet.create({
   scroll: { flex: 1, backgroundColor: colors.bone },
   content: { padding: spacing.xl, paddingBottom: spacing.huge },

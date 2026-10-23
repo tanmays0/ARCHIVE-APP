@@ -3,8 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { colors, spacing, typography } from '../theme';
 import { Button } from '../components/ui/Button';
+import { goToShop } from '../navigation/nav';
 import type { RootStackParamList } from '../navigation/types';
+
 type Props = NativeStackScreenProps<RootStackParamList, 'OrderConfirmation'>;
+
 export function OrderConfirmationScreen({ route, navigation }: Props) {
   const { orderId } = route.params;
   return (
@@ -16,10 +19,12 @@ export function OrderConfirmationScreen({ route, navigation }: Props) {
       </Text>
       <Text style={styles.orderId}>{orderId}</Text>
       <Button
-        title="Continue shopping"
-        onPress={() => navigation.navigate('MainTabs')}
+        title="View order"
+        onPress={() => navigation.navigate('OrderDetail', { orderId })}
         style={styles.cta}
       />
+      <Button title="Continue shopping" variant="secondary" onPress={() => goToShop(navigation)} />
+      <Button title="My orders" variant="ghost" onPress={() => navigation.navigate('Orders')} />
     </View>
   );
 }

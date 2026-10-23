@@ -18,8 +18,11 @@ import { useProducts } from '../hooks/useProducts';
 import collectionsJson from '../data/collections.json';
 import type { Collection, Product } from '../types';
 import type { RootStackParamList } from '../navigation/types';
+import { goToShop } from '../navigation/nav';
+
 const collections = collectionsJson as Collection[];
 const HERO_URI = 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80';
+
 export function HomeScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { width } = useWindowDimensions();
@@ -74,17 +77,33 @@ export function HomeScreen() {
           title="Fewer, better things"
           subtitle="ARCHIVE is a curated marketplace for authenticated vintage and pre-loved fashion. Every piece is inspected, graded, and photographed by hand — a single unit with its own history, ready for its next chapter."
         />
-        <Button
-          title="Shop the Archive"
-          onPress={() => navigation.navigate('MainTabs')}
-          style={styles.cta}
-        />
+        <Button title="Shop the Archive" onPress={() => goToShop(navigation)} style={styles.cta} />
         <Button
           title="How Authentication Works"
           variant="secondary"
           onPress={() => navigation.navigate('AuthenticityServices')}
           style={styles.ctaSecondary}
         />
+        <View style={styles.quickRow}>
+          <Button
+            title="New"
+            variant="ghost"
+            onPress={() => navigation.navigate('NewArrivals')}
+            style={styles.quickBtn}
+          />
+          <Button
+            title="Sale"
+            variant="ghost"
+            onPress={() => navigation.navigate('Sale')}
+            style={styles.quickBtn}
+          />
+          <Button
+            title="Wishlist"
+            variant="ghost"
+            onPress={() => navigation.navigate('Wishlist')}
+            style={styles.quickBtn}
+          />
+        </View>
       </View>
 
       <View style={styles.section}>
@@ -94,7 +113,7 @@ export function HomeScreen() {
             <Pressable
               key={c.id}
               style={[styles.collectionCard, shadows.sm, { width: cardWidth + 40 }]}
-              onPress={() => navigation.navigate('MainTabs')}
+              onPress={() => navigation.navigate('Collection', { collectionId: c.id })}
             >
               <Image source={{ uri: c.image }} style={styles.collectionImage} contentFit="cover" />
               <Text style={styles.collectionName}>{c.name}</Text>
@@ -124,15 +143,15 @@ export function HomeScreen() {
           ))}
         </Animated.ScrollView>
         <Button
-          title="Browse Catalogue"
-          variant="ghost"
-          onPress={() => navigation.navigate('MainTabs')}
+          title="View all new arrivals"
+          variant="secondary"
+          onPress={() => navigation.navigate('NewArrivals')}
+          style={styles.ctaSecondary}
         />
-        <Button
-          title="About ARCHIVE"
-          variant="ghost"
-          onPress={() => navigation.navigate('About')}
-        />
+        <Button title="Browse Catalogue" variant="ghost" onPress={() => goToShop(navigation)} />
+        <Button title="About ARCHIVE" variant="ghost" onPress={() => navigation.navigate('About')} />
+        <Button title="FAQ" variant="ghost" onPress={() => navigation.navigate('FAQ')} />
+        <Button title="Consign with us" variant="ghost" onPress={() => navigation.navigate('Consign')} />
       </View>
     </Animated.ScrollView>
   );
@@ -198,6 +217,15 @@ const styles = StyleSheet.create({
   },
   ctaSecondary: {
     marginBottom: spacing.sm,
+  },
+  quickRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
+    marginTop: spacing.sm,
+  },
+  quickBtn: {
+    minWidth: '28%',
   },
   collectionCard: {
     marginRight: spacing.md,

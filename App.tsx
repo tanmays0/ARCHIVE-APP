@@ -16,9 +16,12 @@ import { RootNavigator } from './src/navigation/RootNavigator';
 import { CartProvider } from './src/context/CartContext';
 import { WishlistProvider } from './src/context/WishlistContext';
 import { ProfileProvider } from './src/context/ProfileContext';
+import { OrdersProvider } from './src/context/OrdersContext';
 import { colors } from './src/theme';
 import { Loader } from './src/components/ui/Loader';
+
 SplashScreen.preventAutoHideAsync().catch(() => {});
+
 const navTheme = {
   ...DefaultTheme,
   colors: {
@@ -30,6 +33,7 @@ const navTheme = {
     primary: colors.clay,
   },
 };
+
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
     Fraunces_400Regular,
@@ -54,12 +58,14 @@ export default function App() {
         <CartProvider>
           <WishlistProvider>
             <ProfileProvider>
-              <NavigationContainer theme={navTheme}>
-                <View style={styles.flex}>
-                  <StatusBar style="dark" />
-                  <RootNavigator />
-                </View>
-              </NavigationContainer>
+              <OrdersProvider>
+                <NavigationContainer theme={navTheme}>
+                  <View style={styles.flex}>
+                    <StatusBar style="dark" />
+                    <RootNavigator />
+                  </View>
+                </NavigationContainer>
+              </OrdersProvider>
             </ProfileProvider>
           </WishlistProvider>
         </CartProvider>

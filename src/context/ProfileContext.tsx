@@ -9,12 +9,12 @@ import React, {
 import { loadProfile, saveProfile } from '../services/storage';
 import type { CustomerProfile } from '../types';
 const DEFAULT_PROFILE: CustomerProfile = {
-  name: 'Alex Morgan',
-  email: 'alex@archive.market',
-  phone: '+1 555 0100',
-  address: '14 Mercer Street',
-  city: 'New York',
-  postalCode: '10013',
+  name: 'Tanmay Shinde',
+  email: 'shinde.tanmay@gmail.com',
+  phone: '+91 9876543210',
+  address: 'A Town Street',
+  city: 'Pune',
+  postalCode: '411028',
   memberSince: '2024-03-01',
   avatarUri: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80',
   orderNotifications: true,

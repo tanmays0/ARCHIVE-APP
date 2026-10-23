@@ -9,7 +9,9 @@ import { Button } from '../components/ui/Button';
 import { EmptyState } from '../components/ui/EmptyState';
 import { useCart } from '../context/CartContext';
 import { formatPrice } from '../utils/format';
+import { goToShop } from '../navigation/nav';
 import type { RootStackParamList } from '../navigation/types';
+
 export function CartScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { getLineProducts, setQuantity, removeItem, subtotal, itemCount } = useCart();
@@ -20,7 +22,7 @@ export function CartScreen() {
         title="Your cart is empty"
         message="Browse the catalogue for authenticated pieces."
         actionLabel="Shop the Archive"
-        onAction={() => navigation.navigate('MainTabs')}
+        onAction={() => goToShop(navigation)}
       />
     );
   }

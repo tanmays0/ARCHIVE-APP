@@ -62,7 +62,7 @@ export function ApiDemoScreen() {
             {item.title}
           </Text>
           <Text style={styles.category}>{item.category}</Text>
-          <Text style={styles.price}>{formatPrice(item.price)}</Text>
+          <Text style={styles.price}>{formatPrice(Math.round(item.price * 83))}</Text>
         </View>
       </View>
     ),

@@ -7,7 +7,7 @@ export interface PriceTagProps {
   compareAtPrice?: number;
   currency?: string;
 }
-export function PriceTag({ price, compareAtPrice, currency = 'USD' }: PriceTagProps) {
+export function PriceTag({ price, compareAtPrice, currency = 'INR' }: PriceTagProps) {
   const onSale = typeof compareAtPrice === 'number' && compareAtPrice > price;
   return (
     <View style={styles.row}>

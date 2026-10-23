@@ -6,20 +6,30 @@
     "brand": "Nike",
     "category": "Men",
     "subcategory": "shoes",
-    "price": 101,
-    "compareAtPrice": 130,
-    "currency": "USD",
+    "price": 8380,
+    "compareAtPrice": 10790,
+    "currency": "INR",
     "description": "A 00s Nike Air Max Pulse in Black — sourced, inspected, and authenticated for the ARCHIVE. Graded Like New: barely worn, with no notable flaws. A single unit, photographed exactly as it is.",
     "condition": "Like New",
     "era": "00s",
     "authenticated": true,
-    "sizes": ["9", "10", "11"],
-    "images": [
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80",
-      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80"
+    "sizes": [
+      "9",
+      "10",
+      "11"
     ],
-    "collectionIds": ["the-air-index"],
-    "tags": ["Air Max", "sneakers"],
+    "images": [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&q=80",
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=900&q=80",
+      "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=900&q=80"
+    ],
+    "collectionIds": [
+      "the-air-index"
+    ],
+    "tags": [
+      "Air Max",
+      "sneakers"
+    ],
     "isNew": true,
     "isFeatured": true
   },
@@ -30,19 +40,30 @@
     "brand": "Nike",
     "category": "Men",
     "subcategory": "shoes",
-    "price": 135,
-    "currency": "USD",
+    "price": 11200,
+    "currency": "INR",
     "description": "A 90s Nike Air Max 90 — visible air, honest wear grading, authenticated by ARCHIVE specialists.",
     "condition": "Like New",
     "era": "90s",
     "authenticated": true,
-    "sizes": ["8", "9", "10", "11"],
-    "images": [
-      "https://images.unsplash.com/photo-1515955656352-a1fa3ffcc111?w=800&q=80",
-      "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=800&q=80"
+    "sizes": [
+      "8",
+      "9",
+      "10",
+      "11"
     ],
-    "collectionIds": ["the-air-index", "city-uniform"],
-    "tags": ["Air Max", "90s"],
+    "images": [
+      "https://images.unsplash.com/photo-1515955656352-a1fa3ffcc111?w=900&q=80",
+      "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=900&q=80"
+    ],
+    "collectionIds": [
+      "the-air-index",
+      "city-uniform"
+    ],
+    "tags": [
+      "Air Max",
+      "90s"
+    ],
     "isNew": true,
     "isFeatured": true
   },
@@ -53,18 +74,27 @@
     "brand": "Nike",
     "category": "Men",
     "subcategory": "shoes",
-    "price": 145,
-    "currency": "USD",
+    "price": 12040,
+    "currency": "INR",
     "description": "The original visible-air silhouette. Graded Excellent with light crease character.",
     "condition": "Excellent",
     "era": "90s",
     "authenticated": true,
-    "sizes": ["9", "10", "12"],
-    "images": [
-      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=800&q=80"
+    "sizes": [
+      "9",
+      "10",
+      "12"
     ],
-    "collectionIds": ["the-air-index"],
-    "tags": ["Air Max"],
+    "images": [
+      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=900&q=80",
+      "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=900&q=80"
+    ],
+    "collectionIds": [
+      "the-air-index"
+    ],
+    "tags": [
+      "Air Max"
+    ],
     "isNew": false,
     "isFeatured": true
   },
@@ -75,19 +105,30 @@
     "brand": "Patagonia",
     "category": "Men",
     "subcategory": "apparel",
-    "price": 55,
-    "compareAtPrice": 99,
-    "currency": "USD",
+    "price": 4560,
+    "compareAtPrice": 8220,
+    "currency": "INR",
     "description": "Ultralight wind shell from the 10s — packable, graded Like New, ready for its next trail.",
     "condition": "Like New",
     "era": "10s",
     "authenticated": true,
-    "sizes": ["S", "M", "L"],
-    "images": [
-      "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80"
+    "sizes": [
+      "S",
+      "M",
+      "L"
     ],
-    "collectionIds": ["the-distance", "city-uniform"],
-    "tags": ["Running", "outerwear"],
+    "images": [
+      "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=900&q=80",
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=900&q=80"
+    ],
+    "collectionIds": [
+      "the-distance",
+      "city-uniform"
+    ],
+    "tags": [
+      "Running",
+      "outerwear"
+    ],
     "isNew": true,
     "isFeatured": false
   },
@@ -98,17 +139,25 @@
     "brand": "Nike",
     "category": "Accessories",
     "subcategory": "gear",
-    "price": 43,
-    "currency": "USD",
+    "price": 3570,
+    "currency": "INR",
     "description": "Everyday pack with honest patina. Graded Excellent — authenticated hardware and stitching.",
     "condition": "Excellent",
     "authenticated": true,
-    "sizes": ["One Size"],
-    "images": [
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80"
+    "sizes": [
+      "One Size"
     ],
-    "collectionIds": ["city-uniform"],
-    "tags": ["Lifestyle", "bags"],
+    "images": [
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=900&q=80",
+      "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=900&q=80"
+    ],
+    "collectionIds": [
+      "city-uniform"
+    ],
+    "tags": [
+      "Lifestyle",
+      "bags"
+    ],
     "isNew": false,
     "isFeatured": false
   },
@@ -119,19 +168,29 @@
     "brand": "Adidas",
     "category": "Women",
     "subcategory": "shoes",
-    "price": 88,
-    "compareAtPrice": 100,
-    "currency": "USD",
+    "price": 7300,
+    "compareAtPrice": 8300,
+    "currency": "INR",
     "description": "Court-to-street classic in gum sole. Graded Good with characterful crease lines.",
     "condition": "Good",
     "era": "00s",
     "authenticated": true,
-    "sizes": ["6", "7", "8", "9"],
-    "images": [
-      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&q=80"
+    "sizes": [
+      "6",
+      "7",
+      "8",
+      "9"
     ],
-    "collectionIds": ["hardwood"],
-    "tags": ["Lifestyle"],
+    "images": [
+      "https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=900&q=80",
+      "https://images.unsplash.com/photo-1491553895911-0055cfa702f9?w=900&q=80"
+    ],
+    "collectionIds": [
+      "hardwood"
+    ],
+    "tags": [
+      "Lifestyle"
+    ],
     "isNew": true,
     "isFeatured": true
   },
@@ -142,18 +201,27 @@
     "brand": "Carhartt WIP",
     "category": "Men",
     "subcategory": "apparel",
-    "price": 120,
-    "currency": "USD",
+    "price": 9960,
+    "currency": "INR",
     "description": "Workwear icon with broken-in canvas. Graded Excellent — authenticated labels and hardware.",
     "condition": "Excellent",
     "era": "00s",
     "authenticated": true,
-    "sizes": ["M", "L", "XL"],
-    "images": [
-      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80"
+    "sizes": [
+      "M",
+      "L",
+      "XL"
     ],
-    "collectionIds": ["city-uniform"],
-    "tags": ["workwear"],
+    "images": [
+      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=900&q=80",
+      "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=900&q=80"
+    ],
+    "collectionIds": [
+      "city-uniform"
+    ],
+    "tags": [
+      "workwear"
+    ],
     "isNew": false,
     "isFeatured": true
   },
@@ -164,18 +232,27 @@
     "brand": "New Balance",
     "category": "Women",
     "subcategory": "shoes",
-    "price": 95,
-    "currency": "USD",
+    "price": 7880,
+    "currency": "INR",
     "description": "Hardwood heritage silhouette. Graded Like New — single unit, no retouching.",
     "condition": "Like New",
     "era": "Y2K",
     "authenticated": true,
-    "sizes": ["6", "7", "8"],
-    "images": [
-      "https://images.unsplash.com/photo-1539185441755-769473a23570?w=800&q=80"
+    "sizes": [
+      "6",
+      "7",
+      "8"
     ],
-    "collectionIds": ["hardwood"],
-    "tags": ["Basketball"],
+    "images": [
+      "https://images.unsplash.com/photo-1539185441755-769473a23570?w=900&q=80",
+      "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=900&q=80"
+    ],
+    "collectionIds": [
+      "hardwood"
+    ],
+    "tags": [
+      "Basketball"
+    ],
     "isNew": true,
     "isFeatured": false
   },
@@ -186,18 +263,28 @@
     "brand": "Levi's",
     "category": "Women",
     "subcategory": "apparel",
-    "price": 78,
-    "currency": "USD",
+    "price": 6470,
+    "currency": "INR",
     "description": "Straight-leg vintage denim with honest fade. Graded Good — measured and photographed as-is.",
     "condition": "Good",
     "era": "90s",
     "authenticated": true,
-    "sizes": ["26", "27", "28", "29"],
-    "images": [
-      "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800&q=80"
+    "sizes": [
+      "26",
+      "27",
+      "28",
+      "29"
     ],
-    "collectionIds": ["city-uniform"],
-    "tags": ["denim"],
+    "images": [
+      "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=900&q=80",
+      "https://images.unsplash.com/photo-1475178626620-a4d074967452?w=900&q=80"
+    ],
+    "collectionIds": [
+      "city-uniform"
+    ],
+    "tags": [
+      "denim"
+    ],
     "isNew": false,
     "isFeatured": false
   },
@@ -208,19 +295,30 @@
     "brand": "Jordan",
     "category": "Men",
     "subcategory": "shoes",
-    "price": 160,
-    "compareAtPrice": 185,
-    "currency": "USD",
+    "price": 13280,
+    "compareAtPrice": 15360,
+    "currency": "INR",
     "description": "Court classic authenticated for ARCHIVE. Graded Excellent with light sole wear.",
     "condition": "Excellent",
     "era": "10s",
     "authenticated": true,
-    "sizes": ["9", "10", "11", "12"],
-    "images": [
-      "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=800&q=80"
+    "sizes": [
+      "9",
+      "10",
+      "11",
+      "12"
     ],
-    "collectionIds": ["hardwood"],
-    "tags": ["Jordan", "Basketball"],
+    "images": [
+      "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=900&q=80",
+      "https://images.unsplash.com/photo-1514989940723-e8e51635b782?w=900&q=80"
+    ],
+    "collectionIds": [
+      "hardwood"
+    ],
+    "tags": [
+      "Jordan",
+      "Basketball"
+    ],
     "isNew": false,
     "isFeatured": true
   },
@@ -231,18 +329,27 @@
     "brand": "The North Face",
     "category": "Women",
     "subcategory": "apparel",
-    "price": 185,
-    "currency": "USD",
+    "price": 15360,
+    "currency": "INR",
     "description": "Puffy outerwear staple. Graded Like New — baffles inspected, zippers verified.",
     "condition": "Like New",
     "era": "10s",
     "authenticated": true,
-    "sizes": ["XS", "S", "M"],
-    "images": [
-      "https://images.unsplash.com/photo-1544923246-77307dd62811?w=800&q=80"
+    "sizes": [
+      "XS",
+      "S",
+      "M"
     ],
-    "collectionIds": ["city-uniform"],
-    "tags": ["outerwear"],
+    "images": [
+      "https://images.unsplash.com/photo-1544923246-77307dd62811?w=900&q=80",
+      "https://images.unsplash.com/photo-1578587018452-892baccfd552?w=900&q=80"
+    ],
+    "collectionIds": [
+      "city-uniform"
+    ],
+    "tags": [
+      "outerwear"
+    ],
     "isNew": true,
     "isFeatured": true
   },
@@ -253,17 +360,25 @@
     "brand": "Converse",
     "category": "Kids",
     "subcategory": "shoes",
-    "price": 42,
-    "currency": "USD",
+    "price": 3490,
+    "currency": "INR",
     "description": "Kids Chuck 70 — graded Good with playground character. Authenticated construction.",
     "condition": "Good",
     "authenticated": true,
-    "sizes": ["1", "2", "3", "4"],
+    "sizes": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=800&q=80"
+      "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=900&h=900&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=900&q=80"
     ],
     "collectionIds": [],
-    "tags": ["Lifestyle"],
+    "tags": [
+      "Lifestyle"
+    ],
     "isNew": false,
     "isFeatured": false
   },
@@ -274,18 +389,28 @@
     "brand": "Nike",
     "category": "Women",
     "subcategory": "shoes",
-    "price": 112,
-    "currency": "USD",
+    "price": 9300,
+    "currency": "INR",
     "description": "Low-profile Dunk with clean overlays. Graded Excellent — authenticated tongue labels.",
     "condition": "Excellent",
     "era": "Y2K",
     "authenticated": true,
-    "sizes": ["6", "7", "8", "9"],
-    "images": [
-      "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=800&q=80"
+    "sizes": [
+      "6",
+      "7",
+      "8",
+      "9"
     ],
-    "collectionIds": ["hardwood"],
-    "tags": ["Basketball"],
+    "images": [
+      "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=900&h=1000&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=900&q=80"
+    ],
+    "collectionIds": [
+      "hardwood"
+    ],
+    "tags": [
+      "Basketball"
+    ],
     "isNew": true,
     "isFeatured": false
   },
@@ -296,18 +421,28 @@
     "brand": "Arc'teryx",
     "category": "Men",
     "subcategory": "apparel",
-    "price": 210,
-    "currency": "USD",
+    "price": 17430,
+    "currency": "INR",
     "description": "Technical midlayer for distance days. Graded Like New — fabric and zippers verified.",
     "condition": "Like New",
     "era": "10s",
     "authenticated": true,
-    "sizes": ["S", "M", "L"],
-    "images": [
-      "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&q=80"
+    "sizes": [
+      "S",
+      "M",
+      "L"
     ],
-    "collectionIds": ["the-distance"],
-    "tags": ["Running", "Technical"],
+    "images": [
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=900&q=80",
+      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&q=80"
+    ],
+    "collectionIds": [
+      "the-distance"
+    ],
+    "tags": [
+      "Running",
+      "Technical"
+    ],
     "isNew": false,
     "isFeatured": true
   },
@@ -318,18 +453,25 @@
     "brand": "Ray-Ban",
     "category": "Accessories",
     "subcategory": "gear",
-    "price": 95,
-    "compareAtPrice": 150,
-    "currency": "USD",
+    "price": 7880,
+    "compareAtPrice": 12450,
+    "currency": "INR",
     "description": "Classic acetate frames. Graded Excellent — hinges and lenses inspected.",
     "condition": "Excellent",
     "authenticated": true,
-    "sizes": ["One Size"],
-    "images": [
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=80"
+    "sizes": [
+      "One Size"
     ],
-    "collectionIds": ["city-uniform"],
-    "tags": ["eyewear"],
+    "images": [
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=900&q=80",
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=900&q=80"
+    ],
+    "collectionIds": [
+      "city-uniform"
+    ],
+    "tags": [
+      "eyewear"
+    ],
     "isNew": false,
     "isFeatured": false
   },
@@ -340,18 +482,27 @@
     "brand": "Nike",
     "category": "Women",
     "subcategory": "shoes",
-    "price": 72,
-    "currency": "USD",
+    "price": 5980,
+    "currency": "INR",
     "description": "Heritage runner kept in circulation. Graded Good with soft midsole character.",
     "condition": "Good",
     "era": "90s",
     "authenticated": true,
-    "sizes": ["6", "7", "8"],
-    "images": [
-      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&q=80"
+    "sizes": [
+      "6",
+      "7",
+      "8"
     ],
-    "collectionIds": ["the-distance"],
-    "tags": ["Running"],
+    "images": [
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=900&q=80",
+      "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=900&q=80"
+    ],
+    "collectionIds": [
+      "the-distance"
+    ],
+    "tags": [
+      "Running"
+    ],
     "isNew": false,
     "isFeatured": false
   },
@@ -362,17 +513,25 @@
     "brand": "Filson",
     "category": "Accessories",
     "subcategory": "gear",
-    "price": 38,
-    "currency": "USD",
+    "price": 3150,
+    "currency": "INR",
     "description": "Oil-finish tin cloth cap. Graded Excellent — brim and stitching verified.",
     "condition": "Excellent",
     "authenticated": true,
-    "sizes": ["S/M", "L/XL"],
-    "images": [
-      "https://images.unsplash.com/photo-1588850561407-ed78ebb295b8?w=800&q=80"
+    "sizes": [
+      "S/M",
+      "L/XL"
     ],
-    "collectionIds": ["city-uniform"],
-    "tags": ["workwear"],
+    "images": [
+      "https://images.unsplash.com/photo-1588850561407-ed78ebb295b8?w=900&q=80",
+      "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=900&q=80"
+    ],
+    "collectionIds": [
+      "city-uniform"
+    ],
+    "tags": [
+      "workwear"
+    ],
     "isNew": true,
     "isFeatured": false
   },
@@ -383,18 +542,28 @@
     "brand": "Adidas",
     "category": "Men",
     "subcategory": "shoes",
-    "price": 90,
-    "currency": "USD",
+    "price": 7470,
+    "currency": "INR",
     "description": "Terrace classic. Graded Like New — gum sole and suede inspected.",
     "condition": "Like New",
     "era": "00s",
     "authenticated": true,
-    "sizes": ["8", "9", "10", "11"],
-    "images": [
-      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80"
+    "sizes": [
+      "8",
+      "9",
+      "10",
+      "11"
     ],
-    "collectionIds": ["hardwood"],
-    "tags": ["Lifestyle"],
+    "images": [
+      "https://images.unsplash.com/photo-1604671804707-a555d2b9c0e9?w=900&q=80",
+      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=900&h=900&fit=crop&q=80"
+    ],
+    "collectionIds": [
+      "hardwood"
+    ],
+    "tags": [
+      "Lifestyle"
+    ],
     "isNew": true,
     "isFeatured": false
   },
@@ -405,18 +574,28 @@
     "brand": "Woolrich",
     "category": "Women",
     "subcategory": "apparel",
-    "price": 240,
-    "currency": "USD",
+    "price": 19920,
+    "currency": "INR",
     "description": "Heavyweight winter parka. Graded Excellent — fur trim and down fill inspected.",
     "condition": "Excellent",
     "era": "10s",
     "authenticated": true,
-    "sizes": ["XS", "S", "M", "L"],
-    "images": [
-      "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=800&q=80"
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
     ],
-    "collectionIds": ["city-uniform"],
-    "tags": ["outerwear"],
+    "images": [
+      "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=900&q=80",
+      "https://images.unsplash.com/photo-1548624313-0396c75f3f3b?w=900&q=80"
+    ],
+    "collectionIds": [
+      "city-uniform"
+    ],
+    "tags": [
+      "outerwear"
+    ],
     "isNew": false,
     "isFeatured": true
   },
@@ -427,17 +606,25 @@
     "brand": "Nike",
     "category": "Kids",
     "subcategory": "shoes",
-    "price": 55,
-    "currency": "USD",
+    "price": 4560,
+    "currency": "INR",
     "description": "Kids AF1 — graded Fair with well-loved character. Authenticated and honestly photographed.",
     "condition": "Fair",
     "authenticated": true,
-    "sizes": ["2", "3", "4", "5"],
+    "sizes": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&q=80"
+      "https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=900&q=80",
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=900&h=900&fit=crop&q=80"
     ],
     "collectionIds": [],
-    "tags": ["Lifestyle"],
+    "tags": [
+      "Lifestyle"
+    ],
     "isNew": false,
     "isFeatured": false
   },
@@ -448,18 +635,28 @@
     "brand": "Salomon",
     "category": "Men",
     "subcategory": "shoes",
-    "price": 130,
-    "currency": "USD",
+    "price": 10790,
+    "currency": "INR",
     "description": "Trail tech for the distance. Graded Excellent — lacing system and midsole verified.",
     "condition": "Excellent",
     "era": "10s",
     "authenticated": true,
-    "sizes": ["9", "10", "11"],
-    "images": [
-      "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=800&q=80"
+    "sizes": [
+      "9",
+      "10",
+      "11"
     ],
-    "collectionIds": ["the-distance"],
-    "tags": ["Running", "Trail"],
+    "images": [
+      "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=900&q=80",
+      "https://images.unsplash.com/photo-1461896836934-ffe607ba6851?w=900&q=80"
+    ],
+    "collectionIds": [
+      "the-distance"
+    ],
+    "tags": [
+      "Running",
+      "Trail"
+    ],
     "isNew": true,
     "isFeatured": true
   },
@@ -470,18 +667,27 @@
     "brand": "Stüssy",
     "category": "Men",
     "subcategory": "apparel",
-    "price": 68,
-    "currency": "USD",
+    "price": 5640,
+    "currency": "INR",
     "description": "Printed work shirt from the Y2K era. Graded Good — print and seams inspected.",
     "condition": "Good",
     "era": "Y2K",
     "authenticated": true,
-    "sizes": ["M", "L", "XL"],
-    "images": [
-      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=800&q=80"
+    "sizes": [
+      "M",
+      "L",
+      "XL"
     ],
-    "collectionIds": ["city-uniform"],
-    "tags": ["streetwear"],
+    "images": [
+      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=900&q=80",
+      "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=900&q=80"
+    ],
+    "collectionIds": [
+      "city-uniform"
+    ],
+    "tags": [
+      "streetwear"
+    ],
     "isNew": false,
     "isFeatured": false
   },
@@ -492,18 +698,25 @@
     "brand": "Coach",
     "category": "Accessories",
     "subcategory": "gear",
-    "price": 175,
-    "compareAtPrice": 350,
-    "currency": "USD",
+    "price": 14520,
+    "compareAtPrice": 29050,
+    "currency": "INR",
     "description": "Pre-loved leather shoulder bag. Graded Excellent — hardware and stitching authenticated.",
     "condition": "Excellent",
     "authenticated": true,
-    "sizes": ["One Size"],
-    "images": [
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80"
+    "sizes": [
+      "One Size"
     ],
-    "collectionIds": ["city-uniform"],
-    "tags": ["bags"],
+    "images": [
+      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=900&q=80",
+      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=900&q=80"
+    ],
+    "collectionIds": [
+      "city-uniform"
+    ],
+    "tags": [
+      "bags"
+    ],
     "isNew": true,
     "isFeatured": true
   },
@@ -514,18 +727,28 @@
     "brand": "Asics",
     "category": "Women",
     "subcategory": "shoes",
-    "price": 105,
-    "currency": "USD",
+    "price": 8720,
+    "currency": "INR",
     "description": "Stability runner with Gel cushioning. Graded Like New — authenticated for the ARCHIVE.",
     "condition": "Like New",
     "era": "00s",
     "authenticated": true,
-    "sizes": ["6", "7", "8", "9"],
-    "images": [
-      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80"
+    "sizes": [
+      "6",
+      "7",
+      "8",
+      "9"
     ],
-    "collectionIds": ["the-distance"],
-    "tags": ["Running"],
+    "images": [
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=900&q=80",
+      "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?w=900&q=80"
+    ],
+    "collectionIds": [
+      "the-distance"
+    ],
+    "tags": [
+      "Running"
+    ],
     "isNew": true,
     "isFeatured": false
   },
@@ -536,18 +759,28 @@
     "brand": "Barbour",
     "category": "Men",
     "subcategory": "apparel",
-    "price": 195,
-    "currency": "USD",
+    "price": 16180,
+    "currency": "INR",
     "description": "Waxed cotton icon. Graded Good with natural wax patina — authenticity tags intact.",
     "condition": "Good",
     "era": "90s",
     "authenticated": true,
-    "sizes": ["38", "40", "42"],
-    "images": [
-      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80"
+    "sizes": [
+      "38",
+      "40",
+      "42"
     ],
-    "collectionIds": ["city-uniform"],
-    "tags": ["outerwear", "workwear"],
+    "images": [
+      "https://images.unsplash.com/photo-1548126032-077b8bbae7a2?w=900&q=80",
+      "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=900&q=80"
+    ],
+    "collectionIds": [
+      "city-uniform"
+    ],
+    "tags": [
+      "outerwear",
+      "workwear"
+    ],
     "isNew": false,
     "isFeatured": false
   },
@@ -558,17 +791,24 @@
     "brand": "Vans",
     "category": "Kids",
     "subcategory": "shoes",
-    "price": 35,
-    "currency": "USD",
+    "price": 2900,
+    "currency": "INR",
     "description": "Kids Old Skool — graded Excellent. Side stripe and sole authenticated.",
     "condition": "Excellent",
     "authenticated": true,
-    "sizes": ["1", "2", "3"],
+    "sizes": [
+      "1",
+      "2",
+      "3"
+    ],
     "images": [
-      "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=800&q=80"
+      "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=900&q=80",
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=900&h=900&fit=crop&q=80"
     ],
     "collectionIds": [],
-    "tags": ["Lifestyle"],
+    "tags": [
+      "Lifestyle"
+    ],
     "isNew": true,
     "isFeatured": false
   }

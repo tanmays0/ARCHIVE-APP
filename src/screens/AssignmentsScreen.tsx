@@ -117,7 +117,45 @@ export function AssignmentsScreen({ navigation }: Props) {
         break;
       case 'ProductDetails':
       case 'OrderConfirmation':
+      case 'OrderDetail':
+      case 'Collection':
         navigation.navigate('MainTabs');
+        break;
+      case 'Wishlist':
+        navigation.navigate('Wishlist');
+        break;
+      case 'Orders':
+        navigation.navigate('Orders');
+        break;
+      case 'NewArrivals':
+        navigation.navigate('NewArrivals');
+        break;
+      case 'Sale':
+        navigation.navigate('Sale');
+        break;
+      case 'FAQ':
+        navigation.navigate('FAQ');
+        break;
+      case 'ShippingPolicy':
+        navigation.navigate('ShippingPolicy');
+        break;
+      case 'ReturnsPolicy':
+        navigation.navigate('ReturnsPolicy');
+        break;
+      case 'PrivacyPolicy':
+        navigation.navigate('PrivacyPolicy');
+        break;
+      case 'TermsOfService':
+        navigation.navigate('TermsOfService');
+        break;
+      case 'Consign':
+        navigation.navigate('Consign');
+        break;
+      case 'SizeGuide':
+        navigation.navigate('SizeGuide');
+        break;
+      case 'Notifications':
+        navigation.navigate('Notifications');
         break;
       default: {
         const _exhaustive: never = target.screen;

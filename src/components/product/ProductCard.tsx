@@ -48,7 +48,11 @@ function ProductCardComponent({ product, onPress, width }: ProductCardProps) {
           {product.name}
         </Text>
         <Text style={styles.condition}>{product.condition}</Text>
-        <PriceTag price={product.price} compareAtPrice={product.compareAtPrice} />
+        <PriceTag
+          price={product.price}
+          compareAtPrice={product.compareAtPrice}
+          currency={product.currency}
+        />
       </View>
     </Pressable>
   );

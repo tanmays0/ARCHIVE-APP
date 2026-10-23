@@ -13,7 +13,23 @@ import { ContactScreen } from '../screens/ContactScreen';
 import { TechInsightsScreen } from '../screens/TechInsightsScreen';
 import { AssignmentsScreen } from '../screens/AssignmentsScreen';
 import { ApiDemoScreen } from '../screens/ApiDemoScreen';
+import { WishlistScreen } from '../screens/WishlistScreen';
+import { OrdersScreen } from '../screens/OrdersScreen';
+import { OrderDetailScreen } from '../screens/OrderDetailScreen';
+import { NewArrivalsScreen } from '../screens/NewArrivalsScreen';
+import { SaleScreen } from '../screens/SaleScreen';
+import { CollectionScreen } from '../screens/CollectionScreen';
+import { FAQScreen } from '../screens/FAQScreen';
+import { ShippingPolicyScreen } from '../screens/ShippingPolicyScreen';
+import { ReturnsPolicyScreen } from '../screens/ReturnsPolicyScreen';
+import { PrivacyPolicyScreen } from '../screens/PrivacyPolicyScreen';
+import { TermsOfServiceScreen } from '../screens/TermsOfServiceScreen';
+import { ConsignScreen } from '../screens/ConsignScreen';
+import { SizeGuideScreen } from '../screens/SizeGuideScreen';
+import { NotificationsScreen } from '../screens/NotificationsScreen';
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
+
 export function RootNavigator() {
   return (
     <Stack.Navigator
@@ -63,6 +79,52 @@ export function RootNavigator() {
         options={{ title: 'Assignments Demo' }}
       />
       <Stack.Screen name="ApiDemo" component={ApiDemoScreen} options={{ title: 'API Demo (A8)' }} />
+      <Stack.Screen name="Wishlist" component={WishlistScreen} options={{ title: 'Wishlist' }} />
+      <Stack.Screen name="Orders" component={OrdersScreen} options={{ title: 'Orders' }} />
+      <Stack.Screen
+        name="OrderDetail"
+        component={OrderDetailScreen}
+        options={{ title: 'Order detail' }}
+      />
+      <Stack.Screen
+        name="NewArrivals"
+        component={NewArrivalsScreen}
+        options={{ title: 'New arrivals' }}
+      />
+      <Stack.Screen name="Sale" component={SaleScreen} options={{ title: 'Sale' }} />
+      <Stack.Screen
+        name="Collection"
+        component={CollectionScreen}
+        options={{ title: 'Collection' }}
+      />
+      <Stack.Screen name="FAQ" component={FAQScreen} options={{ title: 'FAQ' }} />
+      <Stack.Screen
+        name="ShippingPolicy"
+        component={ShippingPolicyScreen}
+        options={{ title: 'Shipping' }}
+      />
+      <Stack.Screen
+        name="ReturnsPolicy"
+        component={ReturnsPolicyScreen}
+        options={{ title: 'Returns' }}
+      />
+      <Stack.Screen
+        name="PrivacyPolicy"
+        component={PrivacyPolicyScreen}
+        options={{ title: 'Privacy' }}
+      />
+      <Stack.Screen
+        name="TermsOfService"
+        component={TermsOfServiceScreen}
+        options={{ title: 'Terms' }}
+      />
+      <Stack.Screen name="Consign" component={ConsignScreen} options={{ title: 'Consign' }} />
+      <Stack.Screen name="SizeGuide" component={SizeGuideScreen} options={{ title: 'Size guide' }} />
+      <Stack.Screen
+        name="Notifications"
+        component={NotificationsScreen}
+        options={{ title: 'Notifications' }}
+      />
     </Stack.Navigator>
   );
 }
