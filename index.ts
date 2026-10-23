@@ -1,3 +1,8 @@
+/**
+ * ARCHIVE Mobile — Metro entry.
+ * Gesture handler must be imported before the app root.
+ */
+import 'react-native-gesture-handler';
 import { registerRootComponent } from 'expo';
 
 import App from './App';

@@ -1,0 +1,87 @@
+/**
+ * ARCHIVE Mobile — Customer profile Context + useReducer.
+ * [Assignment 5] Editable profile fields with persistence.
+ */
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+} from 'react';
+import { loadProfile, saveProfile } from '../services/storage';
+import type { CustomerProfile } from '../types';
+
+const DEFAULT_PROFILE: CustomerProfile = {
+  name: 'Alex Morgan',
+  email: 'alex@archive.market',
+  phone: '+1 555 0100',
+  address: '14 Mercer Street',
+  city: 'New York',
+  postalCode: '10013',
+  memberSince: '2024-03-01',
+  avatarUri: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80',
+  orderNotifications: true,
+  newsletter: false,
+};
+
+type ProfileAction =
+  | { type: 'HYDRATE'; profile: CustomerProfile }
+  | { type: 'UPDATE'; patch: Partial<CustomerProfile> };
+
+function profileReducer(state: CustomerProfile, action: ProfileAction): CustomerProfile {
+  switch (action.type) {
+    case 'HYDRATE':
+      return action.profile;
+    case 'UPDATE':
+      return { ...state, ...action.patch };
+    default: {
+      const _exhaustive: never = action;
+      return _exhaustive;
+    }
+  }
+}
+
+interface ProfileContextValue {
+  profile: CustomerProfile;
+  updateProfile: (patch: Partial<CustomerProfile>) => void;
+  save: () => Promise<void>;
+}
+
+const ProfileContext = createContext<ProfileContextValue | null>(null);
+
+/**
+ * Provides customer profile state.
+ */
+export function ProfileProvider({ children }: { children: React.ReactNode }) {
+  const [profile, dispatch] = useReducer(profileReducer, DEFAULT_PROFILE);
+
+  useEffect(() => {
+    loadProfile().then((stored) => {
+      if (stored) dispatch({ type: 'HYDRATE', profile: stored });
+    });
+  }, []);
+
+  const updateProfile = useCallback((patch: Partial<CustomerProfile>) => {
+    dispatch({ type: 'UPDATE', patch });
+  }, []);
+
+  const save = useCallback(async () => {
+    await saveProfile(profile);
+  }, [profile]);
+
+  const value = useMemo(
+    () => ({ profile, updateProfile, save }),
+    [profile, updateProfile, save],
+  );
+
+  return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;
+}
+
+/** Consumes profile context. */
+export function useProfile(): ProfileContextValue {
+  const ctx = useContext(ProfileContext);
+  if (!ctx) throw new Error('useProfile must be used within ProfileProvider');
+  return ctx;
+}
