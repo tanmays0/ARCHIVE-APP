@@ -3,9 +3,11 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import { colors, radii, shadows, spacing, typography } from '../../theme';
 import type { Product } from '../../types';
+import { safeImageUri } from '../../utils/imageUri';
 import { Badge } from '../ui/Badge';
 import { PriceTag } from '../ui/PriceTag';
 import { useWishlist } from '../../context/WishlistContext';
+import { notify } from '../../utils/notify';
 export interface ProductCardProps {
   product: Product;
   onPress: (product: Product) => void;
@@ -23,13 +25,20 @@ function ProductCardComponent({ product, onPress, width }: ProductCardProps) {
     >
       <View style={styles.imageWrap}>
         <Image
-          source={{ uri: product.images[0] }}
+          source={{ uri: safeImageUri(product.images[0]) }}
           style={styles.image}
           contentFit="cover"
           transition={200}
+          recyclingKey={product.id}
         />
         <Pressable
-          onPress={() => toggle(product.id)}
+          onPress={() => {
+            toggle(product.id);
+            notify(
+              wished ? 'Removed from wishlist' : 'Saved to wishlist',
+              product.name,
+            );
+          }}
           style={styles.heart}
           hitSlop={8}
           accessibilityLabel={wished ? 'Remove from wishlist' : 'Add to wishlist'}

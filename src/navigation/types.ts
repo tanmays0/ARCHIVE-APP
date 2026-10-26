@@ -23,7 +23,6 @@ export type RootStackParamList = {
   AuthenticityServices: undefined;
   Contact: undefined;
   TechInsights: undefined;
-  Assignments: undefined;
   ApiDemo: undefined;
   Wishlist: undefined;
   Orders: undefined;
@@ -39,4 +38,6 @@ export type RootStackParamList = {
   Consign: undefined;
   SizeGuide: undefined;
   Notifications: undefined;
+  Login: { redirectToCheckout?: boolean } | undefined;
+  Register: { redirectToCheckout?: boolean } | undefined;
 };

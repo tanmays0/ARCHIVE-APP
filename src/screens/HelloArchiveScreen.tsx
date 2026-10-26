@@ -12,10 +12,12 @@ export function HelloArchiveScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
-      <Text style={styles.eyebrow}>Assignment 1 · Expo Setup</Text>
-      <Text style={styles.title}>Hello ARCHIVE</Text>
+      <Text style={styles.eyebrow}>Vintage, Verified</Text>
+      <Text style={styles.logo}>ARCHIVE</Text>
+      <Text style={styles.title}>One of one.{'\n'}Authenticated.</Text>
       <Text style={styles.body}>
-        Curated vintage & pre-loved fashion. One of one, verified, and ready for its next chapter.
+        A curated marketplace for pre-loved fashion — inspected, graded, and ready for its next
+        chapter.
       </Text>
       <Button
         title="Enter the Archive"
@@ -39,9 +41,16 @@ const styles = StyleSheet.create({
     color: colors.clay,
     marginBottom: spacing.md,
   },
+  logo: {
+    ...typography.h1,
+    letterSpacing: 6,
+    marginBottom: spacing.lg,
+  },
   title: {
     ...typography.hero,
     textAlign: 'center',
+    fontSize: 34,
+    lineHeight: 40,
   },
   body: {
     ...typography.body,

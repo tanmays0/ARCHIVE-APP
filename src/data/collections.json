@@ -3,28 +3,28 @@
     "id": "city-uniform",
     "name": "The City Uniform",
     "slug": "city-uniform",
-    "description": "The everyday rotation, reconsidered — workwear and outerwear with room to live.",
+    "description": "The everyday rotation, reconsidered \u2014 workwear and outerwear with room to live.",
     "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80"
   },
   {
     "id": "the-distance",
     "name": "Built for the Distance",
     "slug": "the-distance",
-    "description": "Running icons kept in circulation — lighter, faster, verified.",
-    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba6851?w=800&q=80"
+    "description": "Running icons kept in circulation \u2014 lighter, faster, verified.",
+    "image": "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=900&q=80"
   },
   {
     "id": "hardwood",
     "name": "Hardwood Heritage",
     "slug": "hardwood",
-    "description": "Court classics with provenance — from hardwood floors to your rotation.",
+    "description": "Court classics with provenance \u2014 from hardwood floors to your rotation.",
     "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80"
   },
   {
     "id": "the-air-index",
     "name": "The Air Index",
     "slug": "the-air-index",
-    "description": "A survey of visible-air silhouettes — authenticated, graded, one of one.",
+    "description": "A survey of visible-air silhouettes \u2014 authenticated, graded, one of one.",
     "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80"
   }
 ]

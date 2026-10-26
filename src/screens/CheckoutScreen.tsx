@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { colors, spacing, typography } from '../theme';
 import { Input } from '../components/ui/Input';
@@ -8,8 +8,10 @@ import { SectionHeader } from '../components/ui/SectionHeader';
 import { useCart } from '../context/CartContext';
 import { useProfile } from '../context/ProfileContext';
 import { useOrders } from '../context/OrdersContext';
+import { useAuth } from '../context/AuthContext';
 import { createOrderId, formatPrice } from '../utils/format';
 import { validateCheckoutFields } from '../utils/validation';
+import { notify } from '../utils/notify';
 import type { Order, OrderLine } from '../types';
 import type { RootStackParamList } from '../navigation/types';
 
@@ -51,19 +53,30 @@ export function CheckoutScreen({ navigation }: Props) {
   const { subtotal, itemCount, clearCart, getLineProducts } = useCart();
   const { profile, updateProfile } = useProfile();
   const { addOrder } = useOrders();
-  const [fullName, setFullName] = useState(profile.name);
-  const [email, setEmail] = useState(profile.email);
-  const [phone, setPhone] = useState(profile.phone);
+  const { isAuthenticated, user } = useAuth();
+  const placingRef = useRef(false);
+  const [fullName, setFullName] = useState(profile.name || user?.name || '');
+  const [email, setEmail] = useState(profile.email || user?.email || '');
+  const [phone, setPhone] = useState(profile.phone || user?.phone || '');
   const [address, setAddress] = useState(profile.address);
   const [city, setCity] = useState(profile.city);
   const [postalCode, setPostalCode] = useState(profile.postalCode);
   const [giftWrap, setGiftWrap] = useState(false);
   const [saveDetails, setSaveDetails] = useState(true);
   const [errors, setErrors] = useState<Record<string, string | undefined>>({});
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      notify('Sign in required', 'Create an account or sign in to place an order. Your cart is saved.');
+      navigation.replace('Login', { redirectToCheckout: true });
+    }
+  }, [isAuthenticated, navigation]);
+
+  useEffect(() => {
+    if (placingRef.current) return;
     if (itemCount === 0) {
-      Alert.alert('Cart empty', 'Add pieces before checking out.');
+      notify('Cart empty', 'Add pieces before checking out.');
       navigation.goBack();
     }
   }, [itemCount, navigation]);
@@ -73,6 +86,10 @@ export function CheckoutScreen({ navigation }: Props) {
   const lines = getLineProducts();
 
   const onPlaceOrder = () => {
+    if (!isAuthenticated) {
+      navigation.replace('Login', { redirectToCheckout: true });
+      return;
+    }
     const next = validateCheckoutFields({
       fullName,
       email,
@@ -84,9 +101,17 @@ export function CheckoutScreen({ navigation }: Props) {
     setErrors(next);
     const firstError = Object.values(next).find(Boolean);
     if (firstError) {
-      Alert.alert('Check shipping details', firstError);
+      notify('Check shipping details', firstError);
       return;
     }
+    if (lines.length === 0) {
+      notify('Cart empty', 'Add pieces before checking out.');
+      return;
+    }
+
+    placingRef.current = true;
+    setSubmitting(true);
+
     if (saveDetails) {
       updateProfile({
         name: fullName.trim(),
@@ -121,15 +146,22 @@ export function CheckoutScreen({ navigation }: Props) {
       postalCode: postalCode.trim(),
       lines: orderLines,
     });
-    addOrder(order);
-    clearCart();
-    Alert.alert('Order placed', `Your order ${orderId} is confirmed.`, [
-      {
-        text: 'View confirmation',
-        onPress: () => navigation.replace('OrderConfirmation', { orderId }),
-      },
-    ]);
+
+    try {
+      addOrder(order);
+      clearCart();
+      navigation.replace('OrderConfirmation', { orderId });
+      notify('Order placed', `Order ${orderId} confirmed. Thank you for shopping ARCHIVE.`);
+    } catch {
+      placingRef.current = false;
+      setSubmitting(false);
+      notify('Order failed', 'Something went wrong while placing your order. Please try again.');
+    }
   };
+
+  if (!isAuthenticated) {
+    return <View style={styles.screen} />;
+  }
 
   return (
     <ScrollView
@@ -193,7 +225,12 @@ export function CheckoutScreen({ navigation }: Props) {
       ))}
       <Text style={styles.total}>Total {formatPrice(total)}</Text>
 
-      <Button title="Place order" onPress={onPlaceOrder} style={styles.cta} />
+      <Button
+        title="Place order"
+        onPress={onPlaceOrder}
+        loading={submitting}
+        style={styles.cta}
+      />
     </ScrollView>
   );
 }

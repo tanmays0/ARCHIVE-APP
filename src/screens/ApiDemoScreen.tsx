@@ -7,6 +7,7 @@ import { EmptyState } from '../components/ui/EmptyState';
 import { Button } from '../components/ui/Button';
 import { fetchFakeStoreProducts } from '../services/api';
 import { formatPrice } from '../utils/format';
+import { safeImageUri } from '../utils/imageUri';
 import type { FakeStoreProduct } from '../types';
 type LoadState =
   | {
@@ -56,7 +57,12 @@ export function ApiDemoScreen() {
   const renderItem: ListRenderItem<FakeStoreProduct> = useCallback(
     ({ item }) => (
       <View style={styles.row}>
-        <Image source={{ uri: item.image }} style={styles.thumb} contentFit="contain" />
+        <Image
+          source={{ uri: safeImageUri(item.image) }}
+          style={styles.thumb}
+          contentFit="contain"
+          recyclingKey={`fs-${item.id}`}
+        />
         <View style={styles.meta}>
           <Text style={styles.title} numberOfLines={2}>
             {item.title}
@@ -69,15 +75,15 @@ export function ApiDemoScreen() {
     [],
   );
   if (loadState.status === 'loading') {
-    return <Loader message="Fetching FakeStore API…" />;
+    return <Loader message="Loading partner catalogue…" />;
   }
   if (loadState.status === 'error') {
     return (
       <View style={styles.center}>
-        <EmptyState title="API request failed" message={loadState.message} />
-        <Button title="Retry" onPress={onRetry} style={styles.retry} />
+        <EmptyState title="Couldn’t load feed" message={loadState.message} />
+        <Button title="Try again" onPress={onRetry} style={styles.retry} />
         <Pressable onPress={onRetry}>
-          <Text style={styles.hint}>Assignment 8 · loading / error / retry</Text>
+          <Text style={styles.hint}>Tap to retry</Text>
         </Pressable>
       </View>
     );
@@ -94,12 +100,16 @@ export function ApiDemoScreen() {
       initialNumToRender={8}
       windowSize={5}
       ListHeaderComponent={
-        <Text style={styles.banner}>
-          Assignment 8 demo — FakeStore public API (not ARCHIVE inventory). Pull to refresh.
-        </Text>
+        <View style={styles.bannerCard}>
+          <Text style={styles.bannerEyebrow}>Partner feed</Text>
+          <Text style={styles.bannerTitle}>Discover more pieces</Text>
+          <Text style={styles.banner}>
+            A live external catalogue shown alongside ARCHIVE. Pull down to refresh.
+          </Text>
+        </View>
       }
       ListEmptyComponent={
-        <EmptyState title="No API products" message="Try retrying the request." />
+        <EmptyState title="Nothing here yet" message="Pull to refresh or try again shortly." />
       }
     />
   );
@@ -107,10 +117,27 @@ export function ApiDemoScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.bone },
   content: { padding: spacing.xl, paddingBottom: spacing.huge },
+  bannerCard: {
+    backgroundColor: colors.ink,
+    borderRadius: radii.lg,
+    padding: spacing.lg,
+    marginBottom: spacing.lg,
+  },
+  bannerEyebrow: {
+    ...typography.caption,
+    color: colors.clay,
+    textTransform: 'uppercase',
+    letterSpacing: 1.2,
+    marginBottom: spacing.xs,
+  },
+  bannerTitle: {
+    ...typography.h3,
+    color: colors.bone,
+    marginBottom: spacing.sm,
+  },
   banner: {
     ...typography.bodySmall,
-    color: colors.clay,
-    marginBottom: spacing.lg,
+    color: colors.neutral200,
   },
   row: {
     flexDirection: 'row',
@@ -120,7 +147,12 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     marginBottom: spacing.md,
   },
-  thumb: { width: 64, height: 64 },
+  thumb: {
+    width: 72,
+    height: 72,
+    borderRadius: radii.md,
+    backgroundColor: colors.neutral100,
+  },
   meta: { flex: 1 },
   title: { ...typography.bodySmall, fontFamily: typography.button.fontFamily },
   category: { ...typography.caption, marginTop: spacing.xs },

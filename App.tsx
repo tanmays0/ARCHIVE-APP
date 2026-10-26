@@ -17,6 +17,7 @@ import { CartProvider } from './src/context/CartContext';
 import { WishlistProvider } from './src/context/WishlistContext';
 import { ProfileProvider } from './src/context/ProfileContext';
 import { OrdersProvider } from './src/context/OrdersContext';
+import { AuthProvider } from './src/context/AuthContext';
 import { colors } from './src/theme';
 import { Loader } from './src/components/ui/Loader';
 
@@ -55,20 +56,22 @@ export default function App() {
   return (
     <GestureHandlerRootView style={styles.flex} onLayout={onLayoutRootView}>
       <SafeAreaProvider>
-        <CartProvider>
-          <WishlistProvider>
-            <ProfileProvider>
-              <OrdersProvider>
-                <NavigationContainer theme={navTheme}>
-                  <View style={styles.flex}>
-                    <StatusBar style="dark" />
-                    <RootNavigator />
-                  </View>
-                </NavigationContainer>
-              </OrdersProvider>
-            </ProfileProvider>
-          </WishlistProvider>
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <WishlistProvider>
+              <ProfileProvider>
+                <OrdersProvider>
+                  <NavigationContainer theme={navTheme}>
+                    <View style={styles.flex}>
+                      <StatusBar style="dark" />
+                      <RootNavigator />
+                    </View>
+                  </NavigationContainer>
+                </OrdersProvider>
+              </ProfileProvider>
+            </WishlistProvider>
+          </CartProvider>
+        </AuthProvider>
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

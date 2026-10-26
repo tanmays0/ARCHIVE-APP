@@ -1,13 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import {
-  Alert,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  useWindowDimensions,
-} from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { Image } from 'expo-image';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { colors, radii, spacing, typography } from '../theme';
@@ -19,6 +11,8 @@ import { useProducts } from '../hooks/useProducts';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { goToCart } from '../navigation/nav';
+import { safeImageUri } from '../utils/imageUri';
+import { notify } from '../utils/notify';
 import type { RootStackParamList } from '../navigation/types';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'ProductDetails'>;
@@ -45,11 +39,11 @@ export function ProductDetailsScreen({ route, navigation }: Props) {
   }
   const onAdd = () => {
     if (!size) {
-      Alert.alert('Select a size', 'Please choose a size before adding to cart.');
+      notify('Select a size', 'Please choose a size before adding to cart.');
       return;
     }
     addItem(product.id, size, qty);
-    Alert.alert('Added to cart', `${product.name} (${size}) × ${qty}`, [
+    notify('Added to cart', `${product.name} (${size}) × ${qty}`, [
       { text: 'Keep browsing', style: 'cancel' },
       { text: 'View cart', onPress: () => goToCart(navigation) },
     ]);
@@ -68,8 +62,8 @@ export function ProductDetailsScreen({ route, navigation }: Props) {
         {images.map((uri) => (
           <Image
             key={uri}
-            source={{ uri }}
-            style={{ width, height: width * 0.9 }}
+            source={{ uri: safeImageUri(uri) }}
+            style={{ width, height: width * 0.9, backgroundColor: colors.neutral100 }}
             contentFit="cover"
           />
         ))}
@@ -81,7 +75,16 @@ export function ProductDetailsScreen({ route, navigation }: Props) {
       <View style={styles.body}>
         <View style={styles.rowBetween}>
           <Text style={styles.brand}>{product.brand}</Text>
-          <Pressable onPress={() => toggle(product.id)} hitSlop={8}>
+          <Pressable
+            onPress={() => {
+              toggle(product.id);
+              notify(
+                wished ? 'Removed from wishlist' : 'Saved to wishlist',
+                product.name,
+              );
+            }}
+            hitSlop={8}
+          >
             <Text style={styles.heart}>{wished ? '♥ Wishlisted' : '♡ Wishlist'}</Text>
           </Pressable>
         </View>

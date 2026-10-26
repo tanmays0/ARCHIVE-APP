@@ -96,8 +96,10 @@ export function CatalogueScreen() {
           </Pressable>
         ))}
       </View>
-      <Pressable onPress={() => navigation.navigate('ApiDemo')}>
-        <Text style={styles.apiLink}>Assignment 8 · Public API demo →</Text>
+      <Pressable style={styles.discoverCard} onPress={() => navigation.navigate('ApiDemo')}>
+        <Text style={styles.discoverEyebrow}>Beyond the racks</Text>
+        <Text style={styles.discoverTitle}>Discover more pieces</Text>
+        <Text style={styles.discoverBody}>A live partner feed curated alongside ARCHIVE.</Text>
       </Pressable>
       <Text style={styles.count}>{data.length} pieces</Text>
     </View>
@@ -169,10 +171,27 @@ const styles = StyleSheet.create({
   sortBtn: { paddingVertical: spacing.xs },
   sortText: { ...typography.caption, color: colors.textMuted },
   sortActive: { color: colors.clay },
-  apiLink: {
-    ...typography.bodySmall,
+  discoverCard: {
+    backgroundColor: colors.ink,
+    borderRadius: radii.lg,
+    padding: spacing.lg,
+    marginVertical: spacing.md,
+  },
+  discoverEyebrow: {
+    ...typography.caption,
     color: colors.clay,
-    marginVertical: spacing.sm,
+    textTransform: 'uppercase',
+    letterSpacing: 1.2,
+    marginBottom: spacing.xs,
+  },
+  discoverTitle: {
+    ...typography.h3,
+    color: colors.bone,
+    marginBottom: spacing.xs,
+  },
+  discoverBody: {
+    ...typography.bodySmall,
+    color: colors.neutral200,
   },
   count: { ...typography.caption, marginBottom: spacing.sm },
   columnWrap: {

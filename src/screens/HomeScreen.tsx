@@ -19,9 +19,12 @@ import collectionsJson from '../data/collections.json';
 import type { Collection, Product } from '../types';
 import type { RootStackParamList } from '../navigation/types';
 import { goToShop } from '../navigation/nav';
+import { safeImageUri } from '../utils/imageUri';
 
 const collections = collectionsJson as Collection[];
-const HERO_URI = 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80';
+const HERO_URI = safeImageUri(
+  'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80',
+);
 
 export function HomeScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -115,7 +118,11 @@ export function HomeScreen() {
               style={[styles.collectionCard, shadows.sm, { width: cardWidth + 40 }]}
               onPress={() => navigation.navigate('Collection', { collectionId: c.id })}
             >
-              <Image source={{ uri: c.image }} style={styles.collectionImage} contentFit="cover" />
+              <Image
+                source={{ uri: safeImageUri(c.image) }}
+                style={styles.collectionImage}
+                contentFit="cover"
+              />
               <Text style={styles.collectionName}>{c.name}</Text>
             </Pressable>
           ))}
@@ -148,10 +155,24 @@ export function HomeScreen() {
           onPress={() => navigation.navigate('NewArrivals')}
           style={styles.ctaSecondary}
         />
-        <Button title="Browse Catalogue" variant="ghost" onPress={() => goToShop(navigation)} />
-        <Button title="About ARCHIVE" variant="ghost" onPress={() => navigation.navigate('About')} />
-        <Button title="FAQ" variant="ghost" onPress={() => navigation.navigate('FAQ')} />
-        <Button title="Consign with us" variant="ghost" onPress={() => navigation.navigate('Consign')} />
+      </View>
+
+      <View style={styles.footer}>
+        <Pressable onPress={() => goToShop(navigation)} hitSlop={6}>
+          <Text style={styles.footerLink}>Catalogue</Text>
+        </Pressable>
+        <Text style={styles.footerDot}>·</Text>
+        <Pressable onPress={() => navigation.navigate('About')} hitSlop={6}>
+          <Text style={styles.footerLink}>About</Text>
+        </Pressable>
+        <Text style={styles.footerDot}>·</Text>
+        <Pressable onPress={() => navigation.navigate('FAQ')} hitSlop={6}>
+          <Text style={styles.footerLink}>FAQ</Text>
+        </Pressable>
+        <Text style={styles.footerDot}>·</Text>
+        <Pressable onPress={() => navigation.navigate('Consign')} hitSlop={6}>
+          <Text style={styles.footerLink}>Consign</Text>
+        </Pressable>
       </View>
     </Animated.ScrollView>
   );
@@ -260,5 +281,25 @@ const styles = StyleSheet.create({
   },
   carousel: {
     paddingRight: spacing.xl,
+  },
+  footer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacing.sm,
+    paddingHorizontal: spacing.xl,
+    paddingTop: spacing.xl,
+    paddingBottom: spacing.md,
+  },
+  footerLink: {
+    ...typography.caption,
+    color: colors.textMuted,
+    textTransform: 'none',
+    letterSpacing: 0.2,
+  },
+  footerDot: {
+    ...typography.caption,
+    color: colors.stone,
   },
 });

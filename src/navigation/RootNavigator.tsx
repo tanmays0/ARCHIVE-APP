@@ -11,7 +11,6 @@ import { AboutScreen } from '../screens/AboutScreen';
 import { AuthenticityServicesScreen } from '../screens/AuthenticityServicesScreen';
 import { ContactScreen } from '../screens/ContactScreen';
 import { TechInsightsScreen } from '../screens/TechInsightsScreen';
-import { AssignmentsScreen } from '../screens/AssignmentsScreen';
 import { ApiDemoScreen } from '../screens/ApiDemoScreen';
 import { WishlistScreen } from '../screens/WishlistScreen';
 import { OrdersScreen } from '../screens/OrdersScreen';
@@ -27,6 +26,8 @@ import { TermsOfServiceScreen } from '../screens/TermsOfServiceScreen';
 import { ConsignScreen } from '../screens/ConsignScreen';
 import { SizeGuideScreen } from '../screens/SizeGuideScreen';
 import { NotificationsScreen } from '../screens/NotificationsScreen';
+import { LoginScreen } from '../screens/LoginScreen';
+import { RegisterScreen } from '../screens/RegisterScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -71,14 +72,9 @@ export function RootNavigator() {
       <Stack.Screen
         name="TechInsights"
         component={TechInsightsScreen}
-        options={{ title: 'Tech Insights' }}
+        options={{ title: 'How we build' }}
       />
-      <Stack.Screen
-        name="Assignments"
-        component={AssignmentsScreen}
-        options={{ title: 'Assignments Demo' }}
-      />
-      <Stack.Screen name="ApiDemo" component={ApiDemoScreen} options={{ title: 'API Demo (A8)' }} />
+      <Stack.Screen name="ApiDemo" component={ApiDemoScreen} options={{ title: 'Discover more' }} />
       <Stack.Screen name="Wishlist" component={WishlistScreen} options={{ title: 'Wishlist' }} />
       <Stack.Screen name="Orders" component={OrdersScreen} options={{ title: 'Orders' }} />
       <Stack.Screen
@@ -124,6 +120,12 @@ export function RootNavigator() {
         name="Notifications"
         component={NotificationsScreen}
         options={{ title: 'Notifications' }}
+      />
+      <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Sign in' }} />
+      <Stack.Screen
+        name="Register"
+        component={RegisterScreen}
+        options={{ title: 'Create account' }}
       />
     </Stack.Navigator>
   );

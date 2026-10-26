@@ -55,15 +55,15 @@ export function TechInsightsScreen() {
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content}>
       <SectionHeader
-        eyebrow="Assignment 2"
-        title="Native · Hybrid · React Native"
-        subtitle="Which approach fits an authenticated fashion marketplace like ARCHIVE?"
+        eyebrow="Platform"
+        title="How we build ARCHIVE"
+        subtitle="Native, hybrid, and React Native — why Expo powers this marketplace."
       />
 
       <Text style={styles.verdict}>
-        Verdict for ARCHIVE: React Native (Expo) balances catalogue performance, shared TypeScript,
-        offline cart persistence, and time-to-market for a university storefront — without giving up
-        native navigation and FlatList virtualisation.
+        ARCHIVE runs on React Native with Expo: fast catalogue lists, shared TypeScript across
+        screens, offline cart persistence, and native navigation — without shipping two separate
+        apps.
       </Text>
 
       {ROWS.map((row) => (
@@ -84,7 +84,7 @@ export function TechInsightsScreen() {
         </View>
       ))}
 
-      <Text style={styles.footer}>Full write-up: docs/ASSIGNMENT_2_Comparative_Study.md</Text>
+      <Text style={styles.footer}>Built for collectors who expect storefront polish on every device.</Text>
     </ScrollView>
   );
 }

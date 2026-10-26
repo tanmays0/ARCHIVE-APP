@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -8,14 +8,34 @@ import { QuantityStepper } from '../components/ui/QuantityStepper';
 import { Button } from '../components/ui/Button';
 import { EmptyState } from '../components/ui/EmptyState';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import { formatPrice } from '../utils/format';
+import { safeImageUri } from '../utils/imageUri';
+import { notify } from '../utils/notify';
 import { goToShop } from '../navigation/nav';
 import type { RootStackParamList } from '../navigation/types';
 
 export function CartScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { getLineProducts, setQuantity, removeItem, subtotal, itemCount } = useCart();
+  const { isAuthenticated } = useAuth();
   const lines = getLineProducts();
+
+  const onCheckout = () => {
+    if (!isAuthenticated) {
+      notify('Sign in to checkout', 'You can keep items in your cart. Sign in or create an account to place an order.', [
+        { text: 'Not now', style: 'cancel' },
+        { text: 'Sign in', onPress: () => navigation.navigate('Login', { redirectToCheckout: true }) },
+        {
+          text: 'Create account',
+          onPress: () => navigation.navigate('Register', { redirectToCheckout: true }),
+        },
+      ]);
+      return;
+    }
+    navigation.navigate('Checkout');
+  };
+
   if (itemCount === 0) {
     return (
       <EmptyState
@@ -35,7 +55,7 @@ export function CartScreen() {
         renderItem={({ item }) => (
           <View style={styles.row}>
             <Image
-              source={{ uri: item.product.images[0] }}
+              source={{ uri: safeImageUri(item.product.images[0]) }}
               style={styles.thumb}
               contentFit="cover"
             />
@@ -52,7 +72,7 @@ export function CartScreen() {
               <Pressable
                 onPress={() => {
                   removeItem(item.productId, item.size);
-                  Alert.alert('Removed', `${item.product.name} removed from cart.`);
+                  notify('Removed from cart', `${item.product.name} was removed.`);
                 }}
               >
                 <Text style={styles.remove}>Remove</Text>
@@ -66,7 +86,10 @@ export function CartScreen() {
           <Text style={styles.subtotalLabel}>Subtotal</Text>
           <Text style={styles.subtotalValue}>{formatPrice(subtotal)}</Text>
         </View>
-        <Button title="Checkout" onPress={() => navigation.navigate('Checkout')} />
+        {!isAuthenticated ? (
+          <Text style={styles.authHint}>Sign in required to place an order — cart stays saved.</Text>
+        ) : null}
+        <Button title="Checkout" onPress={onCheckout} />
       </View>
     </View>
   );
@@ -101,4 +124,11 @@ const styles = StyleSheet.create({
   },
   subtotalLabel: { ...typography.body },
   subtotalValue: { ...typography.price },
+  authHint: {
+    ...typography.caption,
+    color: colors.clay,
+    marginBottom: spacing.md,
+    textTransform: 'none',
+    letterSpacing: 0,
+  },
 });

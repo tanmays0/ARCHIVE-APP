@@ -89,10 +89,11 @@ export function AboutScreen() {
         onPress={() => navigation.navigate('Contact')}
         style={styles.btn}
       />
+      <Button title="FAQ" variant="ghost" onPress={() => navigation.navigate('FAQ')} />
       <Button
-        title="Assignments Demo Helper"
+        title="How we build"
         variant="ghost"
-        onPress={() => navigation.navigate('Assignments')}
+        onPress={() => navigation.navigate('TechInsights')}
       />
     </ScrollView>
   );

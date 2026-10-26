@@ -35,4 +35,4 @@ Assignment 10 is a **strict superset** of Assignment 9. ARCHIVE ships the storef
 1. **A9 path:** Hello → Home → About → Authenticity → Catalogue → Contact  
 2. **A10 path:** Catalogue → Product → Cart → Checkout → Confirmation → Profile  
 
-Use **Assignments** screen (`AssignmentsScreen`) to jump between demos.
+Use the Profile navigation list (Account / Shop / Help / The house) to jump between demos.

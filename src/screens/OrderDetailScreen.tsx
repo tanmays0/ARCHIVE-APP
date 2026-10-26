@@ -5,6 +5,7 @@ import { colors, radii, spacing, typography } from '../theme';
 import { Button } from '../components/ui/Button';
 import { useOrders } from '../context/OrdersContext';
 import { formatPrice } from '../utils/format';
+import { safeImageUri } from '../utils/imageUri';
 import type { RootStackParamList } from '../navigation/types';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'OrderDetail'>;
@@ -40,7 +41,7 @@ export function OrderDetailScreen({ route, navigation }: Props) {
       <Text style={styles.section}>Items</Text>
       {order.lines.map((line) => (
         <View key={`${line.productId}-${line.size}`} style={styles.line}>
-          <Image source={{ uri: line.image }} style={styles.thumb} />
+          <Image source={{ uri: safeImageUri(line.image) }} style={styles.thumb} />
           <View style={styles.lineMeta}>
             <Text style={styles.lineName}>{line.name}</Text>
             <Text style={styles.meta}>

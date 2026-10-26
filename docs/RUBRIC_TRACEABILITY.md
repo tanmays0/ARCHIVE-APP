@@ -4,7 +4,7 @@
 
 | Feature | Evidence |
 |---------|----------|
-| All screens navigable | `RootNavigator`, `MainTabs`, Assignments helper |
+| All screens navigable | `RootNavigator`, `MainTabs`, Profile nav list |
 | Catalogue FlatList | `CatalogueScreen` + `products.json` (26 items) |
 | Public API demo | `ApiDemoScreen` + `services/api.ts` (loading/error/retry) |
 | Cart persistence | `CartContext` + `storage.ts` (AsyncStorage) |

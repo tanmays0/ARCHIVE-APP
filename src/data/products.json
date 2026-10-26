@@ -9,7 +9,7 @@
     "price": 8380,
     "compareAtPrice": 10790,
     "currency": "INR",
-    "description": "A 00s Nike Air Max Pulse in Black — sourced, inspected, and authenticated for the ARCHIVE. Graded Like New: barely worn, with no notable flaws. A single unit, photographed exactly as it is.",
+    "description": "A 00s Nike Air Max Pulse in Black \u2014 sourced, inspected, and authenticated for the ARCHIVE. Graded Like New: barely worn, with no notable flaws. A single unit, photographed exactly as it is.",
     "condition": "Like New",
     "era": "00s",
     "authenticated": true,
@@ -42,7 +42,7 @@
     "subcategory": "shoes",
     "price": 11200,
     "currency": "INR",
-    "description": "A 90s Nike Air Max 90 — visible air, honest wear grading, authenticated by ARCHIVE specialists.",
+    "description": "A 90s Nike Air Max 90 \u2014 visible air, honest wear grading, authenticated by ARCHIVE specialists.",
     "condition": "Like New",
     "era": "90s",
     "authenticated": true,
@@ -53,7 +53,7 @@
       "11"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1515955656352-a1fa3ffcc111?w=900&q=80",
+      "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=900&q=80"
     ],
     "collectionIds": [
@@ -108,7 +108,7 @@
     "price": 4560,
     "compareAtPrice": 8220,
     "currency": "INR",
-    "description": "Ultralight wind shell from the 10s — packable, graded Like New, ready for its next trail.",
+    "description": "Ultralight wind shell from the 10s \u2014 packable, graded Like New, ready for its next trail.",
     "condition": "Like New",
     "era": "10s",
     "authenticated": true,
@@ -141,7 +141,7 @@
     "subcategory": "gear",
     "price": 3570,
     "currency": "INR",
-    "description": "Everyday pack with honest patina. Graded Excellent — authenticated hardware and stitching.",
+    "description": "Everyday pack with honest patina. Graded Excellent \u2014 authenticated hardware and stitching.",
     "condition": "Excellent",
     "authenticated": true,
     "sizes": [
@@ -183,7 +183,7 @@
     ],
     "images": [
       "https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=900&q=80",
-      "https://images.unsplash.com/photo-1491553895911-0055cfa702f9?w=900&q=80"
+      "https://images.unsplash.com/photo-1603808033192-082d6919d3e1?auto=format&fit=crop&w=900&q=80"
     ],
     "collectionIds": [
       "hardwood"
@@ -203,7 +203,7 @@
     "subcategory": "apparel",
     "price": 9960,
     "currency": "INR",
-    "description": "Workwear icon with broken-in canvas. Graded Excellent — authenticated labels and hardware.",
+    "description": "Workwear icon with broken-in canvas. Graded Excellent \u2014 authenticated labels and hardware.",
     "condition": "Excellent",
     "era": "00s",
     "authenticated": true,
@@ -234,7 +234,7 @@
     "subcategory": "shoes",
     "price": 7880,
     "currency": "INR",
-    "description": "Hardwood heritage silhouette. Graded Like New — single unit, no retouching.",
+    "description": "Hardwood heritage silhouette. Graded Like New \u2014 single unit, no retouching.",
     "condition": "Like New",
     "era": "Y2K",
     "authenticated": true,
@@ -265,7 +265,7 @@
     "subcategory": "apparel",
     "price": 6470,
     "currency": "INR",
-    "description": "Straight-leg vintage denim with honest fade. Graded Good — measured and photographed as-is.",
+    "description": "Straight-leg vintage denim with honest fade. Graded Good \u2014 measured and photographed as-is.",
     "condition": "Good",
     "era": "90s",
     "authenticated": true,
@@ -331,7 +331,7 @@
     "subcategory": "apparel",
     "price": 15360,
     "currency": "INR",
-    "description": "Puffy outerwear staple. Graded Like New — baffles inspected, zippers verified.",
+    "description": "Puffy outerwear staple. Graded Like New \u2014 baffles inspected, zippers verified.",
     "condition": "Like New",
     "era": "10s",
     "authenticated": true,
@@ -341,8 +341,8 @@
       "M"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1544923246-77307dd62811?w=900&q=80",
-      "https://images.unsplash.com/photo-1578587018452-892baccfd552?w=900&q=80"
+      "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=900&q=80"
     ],
     "collectionIds": [
       "city-uniform"
@@ -362,7 +362,7 @@
     "subcategory": "shoes",
     "price": 3490,
     "currency": "INR",
-    "description": "Kids Chuck 70 — graded Good with playground character. Authenticated construction.",
+    "description": "Kids Chuck 70 \u2014 graded Good with playground character. Authenticated construction.",
     "condition": "Good",
     "authenticated": true,
     "sizes": [
@@ -391,7 +391,7 @@
     "subcategory": "shoes",
     "price": 9300,
     "currency": "INR",
-    "description": "Low-profile Dunk with clean overlays. Graded Excellent — authenticated tongue labels.",
+    "description": "Low-profile Dunk with clean overlays. Graded Excellent \u2014 authenticated tongue labels.",
     "condition": "Excellent",
     "era": "Y2K",
     "authenticated": true,
@@ -423,7 +423,7 @@
     "subcategory": "apparel",
     "price": 17430,
     "currency": "INR",
-    "description": "Technical midlayer for distance days. Graded Like New — fabric and zippers verified.",
+    "description": "Technical midlayer for distance days. Graded Like New \u2014 fabric and zippers verified.",
     "condition": "Like New",
     "era": "10s",
     "authenticated": true,
@@ -456,7 +456,7 @@
     "price": 7880,
     "compareAtPrice": 12450,
     "currency": "INR",
-    "description": "Classic acetate frames. Graded Excellent — hinges and lenses inspected.",
+    "description": "Classic acetate frames. Graded Excellent \u2014 hinges and lenses inspected.",
     "condition": "Excellent",
     "authenticated": true,
     "sizes": [
@@ -515,7 +515,7 @@
     "subcategory": "gear",
     "price": 3150,
     "currency": "INR",
-    "description": "Oil-finish tin cloth cap. Graded Excellent — brim and stitching verified.",
+    "description": "Oil-finish tin cloth cap. Graded Excellent \u2014 brim and stitching verified.",
     "condition": "Excellent",
     "authenticated": true,
     "sizes": [
@@ -523,7 +523,7 @@
       "L/XL"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1588850561407-ed78ebb295b8?w=900&q=80",
+      "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=900&q=80"
     ],
     "collectionIds": [
@@ -544,7 +544,7 @@
     "subcategory": "shoes",
     "price": 7470,
     "currency": "INR",
-    "description": "Terrace classic. Graded Like New — gum sole and suede inspected.",
+    "description": "Terrace classic. Graded Like New \u2014 gum sole and suede inspected.",
     "condition": "Like New",
     "era": "00s",
     "authenticated": true,
@@ -555,7 +555,7 @@
       "11"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1604671804707-a555d2b9c0e9?w=900&q=80",
+      "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=900&h=900&fit=crop&q=80"
     ],
     "collectionIds": [
@@ -576,7 +576,7 @@
     "subcategory": "apparel",
     "price": 19920,
     "currency": "INR",
-    "description": "Heavyweight winter parka. Graded Excellent — fur trim and down fill inspected.",
+    "description": "Heavyweight winter parka. Graded Excellent \u2014 fur trim and down fill inspected.",
     "condition": "Excellent",
     "era": "10s",
     "authenticated": true,
@@ -588,7 +588,7 @@
     ],
     "images": [
       "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=900&q=80",
-      "https://images.unsplash.com/photo-1548624313-0396c75f3f3b?w=900&q=80"
+      "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?auto=format&fit=crop&w=900&q=80"
     ],
     "collectionIds": [
       "city-uniform"
@@ -608,7 +608,7 @@
     "subcategory": "shoes",
     "price": 4560,
     "currency": "INR",
-    "description": "Kids AF1 — graded Fair with well-loved character. Authenticated and honestly photographed.",
+    "description": "Kids AF1 \u2014 graded Fair with well-loved character. Authenticated and honestly photographed.",
     "condition": "Fair",
     "authenticated": true,
     "sizes": [
@@ -637,7 +637,7 @@
     "subcategory": "shoes",
     "price": 10790,
     "currency": "INR",
-    "description": "Trail tech for the distance. Graded Excellent — lacing system and midsole verified.",
+    "description": "Trail tech for the distance. Graded Excellent \u2014 lacing system and midsole verified.",
     "condition": "Excellent",
     "era": "10s",
     "authenticated": true,
@@ -648,7 +648,7 @@
     ],
     "images": [
       "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=900&q=80",
-      "https://images.unsplash.com/photo-1461896836934-ffe607ba6851?w=900&q=80"
+      "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=900&q=80"
     ],
     "collectionIds": [
       "the-distance"
@@ -663,13 +663,13 @@
   {
     "id": "ar-0022",
     "sku": "AR-0022",
-    "name": "Stüssy Work Shirt",
-    "brand": "Stüssy",
+    "name": "St\u00fcssy Work Shirt",
+    "brand": "St\u00fcssy",
     "category": "Men",
     "subcategory": "apparel",
     "price": 5640,
     "currency": "INR",
-    "description": "Printed work shirt from the Y2K era. Graded Good — print and seams inspected.",
+    "description": "Printed work shirt from the Y2K era. Graded Good \u2014 print and seams inspected.",
     "condition": "Good",
     "era": "Y2K",
     "authenticated": true,
@@ -701,7 +701,7 @@
     "price": 14520,
     "compareAtPrice": 29050,
     "currency": "INR",
-    "description": "Pre-loved leather shoulder bag. Graded Excellent — hardware and stitching authenticated.",
+    "description": "Pre-loved leather shoulder bag. Graded Excellent \u2014 hardware and stitching authenticated.",
     "condition": "Excellent",
     "authenticated": true,
     "sizes": [
@@ -729,7 +729,7 @@
     "subcategory": "shoes",
     "price": 8720,
     "currency": "INR",
-    "description": "Stability runner with Gel cushioning. Graded Like New — authenticated for the ARCHIVE.",
+    "description": "Stability runner with Gel cushioning. Graded Like New \u2014 authenticated for the ARCHIVE.",
     "condition": "Like New",
     "era": "00s",
     "authenticated": true,
@@ -761,7 +761,7 @@
     "subcategory": "apparel",
     "price": 16180,
     "currency": "INR",
-    "description": "Waxed cotton icon. Graded Good with natural wax patina — authenticity tags intact.",
+    "description": "Waxed cotton icon. Graded Good with natural wax patina \u2014 authenticity tags intact.",
     "condition": "Good",
     "era": "90s",
     "authenticated": true,
@@ -771,7 +771,7 @@
       "42"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1548126032-077b8bbae7a2?w=900&q=80",
+      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?w=900&q=80"
     ],
     "collectionIds": [
@@ -793,7 +793,7 @@
     "subcategory": "shoes",
     "price": 2900,
     "currency": "INR",
-    "description": "Kids Old Skool — graded Excellent. Side stripe and sole authenticated.",
+    "description": "Kids Old Skool \u2014 graded Excellent. Side stripe and sole authenticated.",
     "condition": "Excellent",
     "authenticated": true,
     "sizes": [

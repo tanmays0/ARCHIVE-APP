@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors, typography } from '../theme';
 import type { MainTabParamList } from './types';
@@ -8,10 +8,17 @@ import { CatalogueScreen } from '../screens/CatalogueScreen';
 import { CartScreen } from '../screens/CartScreen';
 import { CustomerProfileScreen } from '../screens/CustomerProfileScreen';
 import { useCart } from '../context/CartContext';
+
 const Tab = createBottomTabNavigator<MainTabParamList>();
-function TabIcon({ label, focused }: { label: string; focused: boolean }) {
-  return <Text style={[styles.icon, focused && styles.iconFocused]}>{label}</Text>;
+
+function TabIcon({ glyph, focused }: { glyph: string; focused: boolean }) {
+  return (
+    <View style={[styles.iconWrap, focused && styles.iconWrapFocused]}>
+      <Text style={[styles.icon, focused && styles.iconFocused]}>{glyph}</Text>
+    </View>
+  );
 }
+
 export function MainTabs() {
   const { itemCount } = useCart();
   return (
@@ -20,13 +27,21 @@ export function MainTabs() {
         headerStyle: { backgroundColor: colors.bone },
         headerTintColor: colors.ink,
         headerTitleStyle: { fontFamily: typography.h3.fontFamily, fontSize: 18 },
+        headerShadowVisible: false,
         tabBarActiveTintColor: colors.clay,
         tabBarInactiveTintColor: colors.textMuted,
         tabBarStyle: {
           backgroundColor: colors.bone,
           borderTopColor: colors.borderSubtle,
+          height: 64,
+          paddingTop: 6,
+          paddingBottom: 8,
         },
-        tabBarLabelStyle: { fontFamily: typography.caption.fontFamily, fontSize: 11 },
+        tabBarLabelStyle: {
+          fontFamily: typography.caption.fontFamily,
+          fontSize: 11,
+          marginTop: 2,
+        },
       }}
     >
       <Tab.Screen
@@ -35,7 +50,7 @@ export function MainTabs() {
         options={{
           title: 'ARCHIVE',
           tabBarLabel: 'Home',
-          tabBarIcon: ({ focused }) => <TabIcon label="⌂" focused={focused} />,
+          tabBarIcon: ({ focused }) => <TabIcon glyph="⌂" focused={focused} />,
         }}
       />
       <Tab.Screen
@@ -44,7 +59,7 @@ export function MainTabs() {
         options={{
           title: 'Catalogue',
           tabBarLabel: 'Shop',
-          tabBarIcon: ({ focused }) => <TabIcon label="▣" focused={focused} />,
+          tabBarIcon: ({ focused }) => <TabIcon glyph="▣" focused={focused} />,
         }}
       />
       <Tab.Screen
@@ -54,7 +69,8 @@ export function MainTabs() {
           title: 'Cart',
           tabBarLabel: 'Cart',
           tabBarBadge: itemCount > 0 ? itemCount : undefined,
-          tabBarIcon: ({ focused }) => <TabIcon label="👜" focused={focused} />,
+          tabBarBadgeStyle: { backgroundColor: colors.clay },
+          tabBarIcon: ({ focused }) => <TabIcon glyph="◎" focused={focused} />,
         }}
       />
       <Tab.Screen
@@ -63,13 +79,22 @@ export function MainTabs() {
         options={{
           title: 'Profile',
           tabBarLabel: 'Profile',
-          tabBarIcon: ({ focused }) => <TabIcon label="◎" focused={focused} />,
+          tabBarIcon: ({ focused }) => <TabIcon glyph="◉" focused={focused} />,
         }}
       />
     </Tab.Navigator>
   );
 }
+
 const styles = StyleSheet.create({
+  iconWrap: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 28,
+  },
+  iconWrapFocused: {
+    transform: [{ scale: 1.05 }],
+  },
   icon: {
     fontSize: 18,
     color: colors.textMuted,

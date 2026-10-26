@@ -48,7 +48,8 @@ export interface CustomerProfile {
   city: string;
   postalCode: string;
   memberSince: string;
-  avatarUri: string;
+  /** Local require() id or remote { uri } — always prefer bundled default in ProfileContext */
+  avatarSource: number | { uri: string };
   orderNotifications: boolean;
   newsletter: boolean;
 }
