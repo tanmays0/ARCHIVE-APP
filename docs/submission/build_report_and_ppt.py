@@ -29,6 +29,8 @@ from reportlab.platypus import (
     TableStyle,
 )
 
+# KeepTogether is used so figure captions never orphan onto a blank following page.
+
 ROOT = Path(__file__).resolve().parent
 SHOTS = ROOT / "screenshots"
 OUT_PDF = ROOT / "Tanmay_Shinde_CPAD_Assignments_1-10_ARCHIVE_Report.pdf"
@@ -170,16 +172,20 @@ def shot(name: str, max_w: float = 2.35 * inch, max_h: float = 4.6 * inch) -> Im
     return Image(str(path), width=w * scale, height=h * scale)
 
 
-def fig(name: str, caption: str, s, max_w=2.4 * inch):
-    img = shot(name, max_w=max_w)
+def fig_parts(name: str, caption: str, s, max_w=2.4 * inch, max_h=4.6 * inch):
+    img = shot(name, max_w=max_w, max_h=max_h)
     if img is None:
         return [Paragraph(f"[Screenshot missing: {name}]", s["caption"])]
     return [img, Paragraph(caption, s["caption"])]
 
 
-def two_figs(a, ca, b, cb, s):
-    left = fig(a, ca, s, max_w=2.55 * inch)
-    right = fig(b, cb, s, max_w=2.55 * inch)
+def fig(name: str, caption: str, s, max_w=2.4 * inch, max_h=4.6 * inch):
+    return KeepTogether(fig_parts(name, caption, s, max_w=max_w, max_h=max_h))
+
+
+def two_figs(a, ca, b, cb, s, max_w=2.55 * inch, max_h=4.2 * inch):
+    left = fig_parts(a, ca, s, max_w=max_w, max_h=max_h)
+    right = fig_parts(b, cb, s, max_w=max_w, max_h=max_h)
     t = Table([[left, right]], colWidths=[3.3 * inch, 3.3 * inch])
     t.setStyle(
         TableStyle(
@@ -191,7 +197,7 @@ def two_figs(a, ca, b, cb, s):
             ]
         )
     )
-    return t
+    return KeepTogether([t])
 
 
 def kv_table(rows, col_widths=None):
@@ -288,22 +294,22 @@ def build_pdf():
         PageBreak(),
     ]
 
-    # TOC
+    # TOC (section titles only — page numbers shift with figures)
     story += [
         Paragraph("Table of Contents", s["h1"]),
-        Paragraph("1. Introduction and Project Overview ............................................. 3", s["toc"]),
-        Paragraph("2. Assignment 1: Setup and Hello ARCHIVE ........................................ 4", s["toc"]),
-        Paragraph("3. Assignment 2: Native vs Hybrid vs React Native ................................. 5", s["toc"]),
-        Paragraph("4. Assignment 3: Components, Props and useState ................................... 6", s["toc"]),
-        Paragraph("5. Assignment 4: Folder Structure and Reuse ....................................... 7", s["toc"]),
-        Paragraph("6. Assignment 5: Customer Profile with Core Components ............................ 8", s["toc"]),
-        Paragraph("7. Assignment 6: Flexbox, TextInput and Events .................................... 9", s["toc"]),
-        Paragraph("8. Assignment 7: Multi-Screen Navigation ......................................... 10", s["toc"]),
-        Paragraph("9. Assignment 8: Dynamic Data (JSON + Public API) ................................ 11", s["toc"]),
-        Paragraph("10. Assignment 9: E-Commerce Storefront .......................................... 12", s["toc"]),
-        Paragraph("11. Assignment 10: Complete Shopping Application ................................. 13", s["toc"]),
-        Paragraph("12. Rubric Alignment ............................................................. 14", s["toc"]),
-        Paragraph("13. Conclusion ................................................................... 15", s["toc"]),
+        Paragraph("1. Introduction and Project Overview", s["toc"]),
+        Paragraph("2. Assignment 1: Setup and Hello ARCHIVE", s["toc"]),
+        Paragraph("3. Assignment 2: Native vs Hybrid vs React Native", s["toc"]),
+        Paragraph("4. Assignment 3: Components, Props and useState", s["toc"]),
+        Paragraph("5. Assignment 4: Folder Structure and Reuse", s["toc"]),
+        Paragraph("6. Assignment 5: Customer Profile with Core Components", s["toc"]),
+        Paragraph("7. Assignment 6: Flexbox, TextInput, Events + Auth screens", s["toc"]),
+        Paragraph("8. Assignment 7: Multi-Screen Navigation", s["toc"]),
+        Paragraph("9. Assignment 8: Dynamic Data (JSON + Public API)", s["toc"]),
+        Paragraph("10. Assignment 9: E-Commerce Storefront", s["toc"]),
+        Paragraph("11. Assignment 10: Complete Shopping Application", s["toc"]),
+        Paragraph("12. Rubric Alignment", s["toc"]),
+        Paragraph("13. Conclusion", s["toc"]),
         PageBreak(),
     ]
 
@@ -376,7 +382,7 @@ def build_pdf():
             s["body"],
         ),
         Paragraph("2.4 Output", s["h2"]),
-        *fig("01_hello", "Figure 1: Hello ARCHIVE boot screen (Assignment 1)", s, max_w=2.2 * inch),
+        fig("01_hello", "Figure 1: Hello ARCHIVE boot screen (Assignment 1)", s, max_w=2.2 * inch),
         PageBreak(),
     ]
 
@@ -407,7 +413,7 @@ def build_pdf():
             s,
         ),
         Paragraph("3.4 Output", s["h2"]),
-        *fig("10_tech", "Figure 2: How we build ARCHIVE — comparative study screen (Assignment 2)", s, max_w=2.2 * inch),
+        fig("10_tech", "Figure 2: How we build ARCHIVE — comparative study screen (Assignment 2)", s, max_w=2.2 * inch),
         PageBreak(),
     ]
 
@@ -444,42 +450,45 @@ def build_pdf():
         PageBreak(),
     ]
 
-    # A4
+    # A4 — keep theory + folder screenshot on a single page (no orphan caption page)
     story += [
-        Paragraph("5. Assignment 4: Folder Structure and Reuse", s["h1"]),
-        Paragraph("5.1 Aim", s["h2"]),
-        Paragraph(
-            "To organise the project so each folder matches a course concept, with shared components reused across screens.",
-            s["body"],
-        ),
-        Paragraph("5.2 Documented folder structure", s["h2"]),
-        kv_table(
+        KeepTogether(
             [
-                ("App.tsx / index.ts", "Providers + RootNavigator entry"),
-                ("src/screens/", "One screen module per feature"),
-                ("src/components/ui/", "Reusable Button, Badge, Loader, EmptyState…"),
-                ("src/components/product/", "ProductCard"),
-                ("src/context/", "Auth, Cart, Wishlist, Profile, Orders"),
-                ("src/navigation/", "RootNavigator (stack) + MainTabs"),
-                ("src/data/", "products.json, collections.json"),
-                ("src/services/", "Public API fetch + AsyncStorage"),
-                ("docs/", "Academic write-ups and this submission"),
+                Paragraph("5. Assignment 4: Folder Structure and Reuse", s["h1"]),
+                Paragraph("5.1 Aim", s["h2"]),
+                Paragraph(
+                    "To organise the project so each folder matches a course concept, with shared components reused across screens.",
+                    s["body"],
+                ),
+                Paragraph("5.2 Documented folder structure", s["h2"]),
+                kv_table(
+                    [
+                        ("App.tsx", "Providers + RootNavigator entry"),
+                        ("src/screens/", "Feature screens incl. Login / Register"),
+                        ("src/components/", "ui/ kit + product/ProductCard"),
+                        ("src/context/", "Auth, Cart, Wishlist, Profile, Orders"),
+                        ("src/navigation/", "RootNavigator (stack) + MainTabs"),
+                        ("src/data/ + services/", "JSON catalogue, API, AsyncStorage"),
+                        ("docs/", "Academic write-ups and this submission"),
+                    ]
+                ),
+                Paragraph("5.3 State in the application", s["h2"]),
+                bullets(
+                    [
+                        "AuthContext — local register/login session (required for checkout).",
+                        "CartContext + useReducer with AsyncStorage persistence.",
+                        "WishlistContext and ProfileContext sync after sign-in.",
+                    ],
+                    s,
+                ),
+                fig(
+                    "14_folder",
+                    "Figure 5: ARCHIVE folder structure (Assignment 4)",
+                    s,
+                    max_w=5.2 * inch,
+                    max_h=2.65 * inch,
+                ),
             ]
-        ),
-        Paragraph("5.3 State in the application", s["h2"]),
-        bullets(
-            [
-                "AuthContext — local register/login session (required for checkout).",
-                "CartContext + useReducer with AsyncStorage persistence.",
-                "WishlistContext and ProfileContext sync after sign-in.",
-            ],
-            s,
-        ),
-        *fig(
-            "14_folder",
-            "Figure 5: ARCHIVE folder structure (Assignment 4)",
-            s,
-            max_w=5.4 * inch,
         ),
         PageBreak(),
     ]
@@ -512,11 +521,11 @@ def build_pdf():
             "Guests see Sign in / Create account; signed-in members see their account details.",
             s["body"],
         ),
-        *fig("07_profile", "Figure 6: Customer Profile — core components + nav list (Assignment 5)", s, max_w=2.2 * inch),
+        fig("07_profile", "Figure 6: Customer Profile — core components + nav list (Assignment 5)", s, max_w=2.2 * inch),
         PageBreak(),
     ]
 
-    # A6
+    # A6 — login/register screenshots are the primary figures for this section
     story += [
         Paragraph("7. Assignment 6: Flexbox, TextInput and Events", s["h1"]),
         Paragraph("7.1 Flexbox layouts", s["h2"]),
@@ -537,28 +546,32 @@ def build_pdf():
             ],
             s,
         ),
-        two_figs(
-            "06_checkout",
-            "Figure 7: Checkout form — controlled inputs",
-            "05_cart",
-            "Figure 8: Cart — Flexbox rows + QuantityStepper",
-            s,
-        ),
-        PageBreak(),
-        Paragraph("7.3 Sign in & create account", s["h2"]),
+        Paragraph("7.3 Sign in & create account (primary screenshots)", s["h2"]),
         Paragraph(
             "Guests may browse and add items to the cart. Placing an order requires a registered "
             "account. LoginScreen and RegisterScreen demonstrate TextInput, onPress validation, "
-            "and navigation into Checkout after a successful session. Profile remains available "
-            "after login with the member details from registration.",
+            "and navigation into Checkout after a successful session.",
             s["body"],
         ),
         two_figs(
             "12_login",
-            "Figure 9: Sign in screen (Assignment 6)",
+            "Figure 7: Sign in screen (Assignment 6)",
             "13_register",
-            "Figure 10: Create account screen (Assignment 6)",
+            "Figure 8: Create account screen (Assignment 6)",
             s,
+            max_w=2.7 * inch,
+            max_h=4.35 * inch,
+        ),
+        PageBreak(),
+        Paragraph("7.4 Checkout & cart (supporting screenshots)", s["h2"]),
+        two_figs(
+            "06_checkout",
+            "Figure 9: Checkout form — controlled inputs",
+            "05_cart",
+            "Figure 10: Cart — Flexbox rows + QuantityStepper",
+            s,
+            max_w=2.5 * inch,
+            max_h=4.0 * inch,
         ),
         PageBreak(),
     ]
@@ -584,7 +597,7 @@ def build_pdf():
             "Profile list items navigate into the same stack.",
             s["body"],
         ),
-        *fig("11_tabs", "Figure 11: Bottom tab navigation bar (Assignment 7)", s, max_w=2.2 * inch),
+        fig("11_tabs", "Figure 11: Bottom tab navigation bar (Assignment 7)", s, max_w=2.2 * inch),
         PageBreak(),
     ]
 
@@ -1063,7 +1076,7 @@ def build_pptx():
     add_picture_safe(slide, "05_cart", Inches(1.2), Inches(4.6), height=Inches(2.7))
     add_picture_safe(slide, "06_checkout", Inches(7.2), Inches(4.6), height=Inches(2.7))
 
-    # —— 11 Auth: Login & Create account ——
+    # —— 11 Auth: Login & Create account (full-bleed phone screenshots) ——
     slide = prs.slides.add_slide(blank)
     set_slide_bg(slide, BRAND_HEX["bone"])
     section_title(
@@ -1071,24 +1084,25 @@ def build_pptx():
         "Sign in & create account",
         "Browse freely · cart without login · checkout requires an account",
     )
+    # Large side-by-side phone screenshots (primary visual for this slide)
+    add_picture_safe(slide, "12_login", Inches(0.45), Inches(1.35), height=Inches(5.85))
+    add_picture_safe(slide, "13_register", Inches(3.55), Inches(1.35), height=Inches(5.85))
     bullets_box(
         slide,
         [
-            "AuthContext stores accounts + session in AsyncStorage",
-            "Create account: name, email, phone, password (min 6)",
-            "Sign in unlocks Checkout and a real Profile",
-            "Guest Profile shows Sign in / Create account CTAs",
-            "In-app popups for welcome, errors, and order placed",
-            "Cart remains saved across the auth redirect",
+            "AuthContext + AsyncStorage session",
+            "Create account: name, email, phone, password",
+            "Sign in unlocks Checkout + Profile",
+            "Guest can still add to cart",
+            "Popups: welcome, errors, order placed",
+            "Cart saved across auth redirect",
         ],
-        Inches(0.55),
+        Inches(6.85),
         Inches(1.55),
-        Inches(5.8),
+        Inches(5.9),
         Inches(5.2),
-        size=15,
+        size=16,
     )
-    add_picture_safe(slide, "12_login", Inches(6.5), Inches(1.35), height=Inches(5.7))
-    add_picture_safe(slide, "13_register", Inches(9.85), Inches(1.35), height=Inches(5.7))
 
     # —— 12 Profile & trust ——
     slide = prs.slides.add_slide(blank)
@@ -1166,6 +1180,13 @@ def build_pptx():
     section_title(slide, "UI gallery — commerce & account", "Cart · Checkout · Profile · Discover")
     for i, name in enumerate(["05_cart", "06_checkout", "07_profile", "08_discover"]):
         add_picture_safe(slide, name, Inches(0.35 + i * 3.25), Inches(1.45), height=Inches(5.6))
+
+    # —— Auth gallery (dedicated) ——
+    slide = prs.slides.add_slide(blank)
+    set_slide_bg(slide, BRAND_HEX["bone"])
+    section_title(slide, "UI gallery — authentication", "Sign in · Create account")
+    add_picture_safe(slide, "12_login", Inches(2.2), Inches(1.25), height=Inches(5.9))
+    add_picture_safe(slide, "13_register", Inches(6.9), Inches(1.25), height=Inches(5.9))
 
     # —— 16 Screenshot gallery 3 ——
     slide = prs.slides.add_slide(blank)
